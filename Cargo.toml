@@ -1,0 +1,26 @@
+[package]
+
+name = "my-piston-project"
+version = "0.0.0"
+authors = ["your name here"]
+
+[dependencies.piston]
+
+git = "https://github.com/PistonDevelopers/piston"
+
+[dependencies.glfw_game_window]
+
+git = "https://github.com/PistonDevelopers/glfw_game_window.git"
+
+[dependencies.graphics]
+
+git = "https://github.com/PistonDevelopers/rust-graphics.git"
+
+[dependencies.opengl_graphics]
+
+git = "https://github.com/PistonDevelopers/opengl_graphics.git"
+
+[[bin]]
+
+name = "hello"
+path = "./src/hello.rs" # We will create this file in the next section.
