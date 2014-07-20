@@ -1,0 +1,18 @@
+env:
+    global:
+        - LD_LIBRARY_PATH: /usr/local/lib
+before_install:
+    - curl http://www.rust-lang.org/rustup.sh | sudo -E sh
+    - rustc -v
+    - cargo -v
+install:
+    - sudo apt-get install libXxf86vm-dev
+    - git clone https://github.com/glfw/glfw.git
+    - cd glfw
+    - git checkout 3.0.3
+    - cmake -DCMAKE_C_FLAGS=-fPIC -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF .
+    - make
+    - sudo make install
+    - cd ../
+script:
+    - cargo build
