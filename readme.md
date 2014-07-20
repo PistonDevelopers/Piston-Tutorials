@@ -6,6 +6,8 @@ simply clone the tutorial and immediately get the code that _should_ work.
 
 # Tutorial
 
+[![Build Status](https://travis-ci.org/TyOverby/Piston-Tutorial.svg?branch=master)](https://travis-ci.org/TyOverby/Piston-Tutorial)
+
 In this tutorial, I hope to get you from an empty Cargo project, to having a
 window with a triangle drawn on it.
 I assume that you have installed Rust and Cargo, and have already built a
