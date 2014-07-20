@@ -1,3 +1,10 @@
+# About This Tutorial
+
+This tutorial is also a git repository.  Feel free to make pull requests or
+simply clone the tutorial and immediately get the code that _should_ work.
+
+# Tutorial
+
 In this tutorial, I hope to get you from an empty Cargo project, to having a
 window with a triangle drawn on it.
 I assume that you have installed Rust and Cargo, and have already built a
