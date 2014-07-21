@@ -5,6 +5,12 @@
 
 In this tutorial, I hope to get you from an empty Cargo project to having a
 window with a rotating square in it.
+This tutorial does ___not___ explain concepts used in the game, as those
+will be covered by other tutorials.
+This tutorial only covers project setup and contains a sample "game" simply
+to test the build environment.
+
+
 I assume that you have installed Rust and Cargo, and have already built a
 hello-world project with Cargo.
 If you haven't met these criteria, please read the first few chapters of
@@ -144,16 +150,15 @@ combined.
 
 Ok, time for some actual programming.
 
-First lets create the `src` directory and a file use as the entry point for
+First create the source directory and a file use as the entry point for
 our application.
 
 ```bash
 mkdir src
-cd src
-touch game.rs
+touch src/game.rs
 ```
 
-Now in your favorite editor edit `game.rs`.
+Now in your favorite editor edit `src/game.rs`.
 
 ```rust
 extern crate graphics;
