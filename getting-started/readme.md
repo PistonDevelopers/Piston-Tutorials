@@ -247,3 +247,6 @@ If all goes well, you should have the binary `game` inside the `target`
 directory.
 
 Run it by executing `./target/game`.
+
+On your screen you should have a rotating square that looks like this:
+![Result](./out.gif)
