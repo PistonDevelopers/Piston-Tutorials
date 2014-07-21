@@ -8,7 +8,7 @@ tutorial.
 
 #### [Getting Started With Piston](./getting-started)
 A "tutorial" with instructions on compiling and running a very
-simple Piston game up and running.
+simple Piston.
 
 ## Planned Tutorials
 
