@@ -65,7 +65,7 @@ using apt-get, yum, or by building from source.
 8. `make`
 9. `sudo make install`
 
-#### Verifying
+#### At this stage
 
 * `echo $LD_LIBRARY_PATH` should contain `/usr/local/lib`.
 * `ls /usr/local/lib/` should contain `libglfw3.a`.
