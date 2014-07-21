@@ -249,4 +249,5 @@ directory.
 Run it by executing `./target/game`.
 
 On your screen you should have a rotating square that looks like this:
+
 ![Result](./out.gif)
