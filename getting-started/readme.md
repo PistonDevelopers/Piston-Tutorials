@@ -29,17 +29,17 @@ guide and make sure that you have the latest versions of `rustc` and `cargo`.
 
 Parts of the Piston project depend on native C libraries.  For example, in
 order to display a window and hook it up to an OpenGL context, we can use
-either GLFW or SDL2 as the implementation of our windowing system.
+either GLFW or SDL2 as the implementation of the windowing system.
 
 The rest of this tutorial uses GLFW for windowing, so we will need to
-install its native library.
+install the GLFW native library.
 
 ### GLFW on OSX
 
-If you use [Homebrew](http://brew.sh), this is as simple as
-`brew install homebrew/versions/glfw3 static`.  That's it.  You're done.
+If you use [Homebrew](http://brew.sh), installing GLFW is as simple as
+`brew install --static homebrew/versions/glfw3`.  That's it.  Done.
 
-Otherwise, follow the steps for setting it up on Linux.
+Otherwise, follow the steps under [GLFW on Linux](#glfw-on-linux)
 
 Honestly, it's probably easier to just install Homebrew and then follow the
 homebrew instructions.
@@ -76,8 +76,9 @@ TODO
 
 ## Setting Up The Project
 
-Alright, if everything is set up correctly, it's time to get a Cargo project
-built, and Piston installed.
+If everything is set up correctly, it's time to create a Cargo project
+and specify dependencies.
+
 
 ```bash
 mkdir getting-started
@@ -85,7 +86,7 @@ cd getting-started
 touch Cargo.toml
 ```
 
-Now in your favorite editor, lets add project settings and dependencies to
+Now in your favorite editor, add project settings and dependencies to
 `Cargo.toml`.
 
 
@@ -120,12 +121,12 @@ path = "./src/game.rs" # We will create this file in the next section.
 
 You might be thinking that this is a lot of dependencies for such a simple
 example application.
-This is because of how the Piston Projects are set up.
+This is because of how the Piston Projects are organized.
 The `piston` and `graphics` libraries are able to do a lot of work by
 themselves, but they are made to be completely independent of a
 backing implementation.
 For example, when it comes to displaying a window and getting keyboard events
-in a cross-platform maner, you can use either GLFW or SDL2.
+in a cross-platform manner, you can use either GLFW or SDL2.
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
 with an OpenGL context.
 In this tutorial I chose GLFW, so you will notice that in the cargo file, we
@@ -139,14 +140,14 @@ through directx, or render straight to a png.
 In this tutorial, we are rendering using OpenGL, so we'll use `opengl_graphics`.
 
 The pattern of "interface" and "backend" is very common with Piston Projects.
-While other game engines might encompass more functionality, we prefer to have
-many libraries that are separated and extendable, but also work well when
+While other game engines might encompass lots of functionality, we prefer to have
+many libraries that are separate and extendable, but also work well when
 combined.
 
 
 ## Writing Some Code
 
-Ok, time for some actual programming.
+Ok, time for some game logic.
 
 First create the source directory and a file use as the entry point for
 our application.
@@ -236,9 +237,9 @@ fn main() {
 
 ## Compiling and running.
 
-Awesome!  Now that we have some game code, lets get it running!
+Awesome!  Now that we have the game code, let's get it running!
 With Cargo, downloaing dependencies and building the application is as
-simple as running `cargo build`.
+simple as running `cargo build` from the main project directory..
 
 If all goes well, you should have the binary `game` inside the `target`
 directory.
