@@ -19,8 +19,8 @@ you've finished.
 
 #### At this stage
 
-* You should be able to run the commands `rustc -v`
-* You should be able to run the commands `cargo -V`
+* You should be able to run the command `rustc -v`
+* You should be able to run the command `cargo -V`
 
 If you have failed either of these, please review the getting started
 guide and make sure that you have the latest versions of `rustc` and `cargo`.
