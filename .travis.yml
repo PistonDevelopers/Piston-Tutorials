@@ -15,4 +15,5 @@ install:
     - sudo make install
     - cd ../
 script:
+    - cd ./getting-started
     - cargo build

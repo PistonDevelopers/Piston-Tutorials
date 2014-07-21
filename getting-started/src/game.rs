@@ -10,7 +10,8 @@ use piston::{
     Game,
     GameWindowSettings,
     GameIteratorSettings,
-    RenderArgs
+    RenderArgs,
+    UpdateArgs
 };
 
 use graphics::{
@@ -36,14 +37,16 @@ impl Game for App {
         // Draw a box rotating around the middle of the screen.
         context
             .trans((args.width / 2) as f64, (args.height / 2) as f64)
-            .rot_deg(self.rotation)
+            .rot_rad(self.rotation)
             .rect(0.0, 0.0, 50.0, 50.0)
             .rgba(1.0, 0.0, 0.0,1.0)
             .trans(-25.0, -25.0)
             .draw(&mut self.gl);
+    }
 
-        // Rotate by one degree.
-        self.rotation += 1.0;
+    fn update(&mut self, args: &UpdateArgs) {
+        // Rotate 2 radians per second.
+        self.rotation += 2.0 * args.dt;
     }
 }
 
