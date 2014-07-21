@@ -1,11 +1,5 @@
-# About This Tutorial
-
-This tutorial is part of a git repository located
-[here](https://github.com/TyOverby/Piston-Tutorial).
-Feel free to make pull requests or simply clone the tutorial and immediately get
-the code that _should_ work right out of the box.
-
-# Tutorial
+# Getting Started
+### Spinning Square
 
 [![Build Status](https://travis-ci.org/TyOverby/Piston-Tutorial.svg?branch=master)](https://travis-ci.org/TyOverby/Piston-Tutorial)
 
