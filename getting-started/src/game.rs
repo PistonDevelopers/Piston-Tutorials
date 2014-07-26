@@ -8,6 +8,7 @@ use opengl_graphics::Gl;
 
 use piston::{
     Game,
+    GameWindow,
     GameWindowSettings,
     GameIteratorSettings,
     RenderArgs,
@@ -27,8 +28,8 @@ pub struct App {
     rotation: f64 // Rotation for the square.
 }
 
-impl Game for App {
-    fn render(&mut self, args: &RenderArgs) {
+impl <W: GameWindow> Game<W> for App {
+    fn render(&mut self, _: &mut W, args: &RenderArgs) {
         // Set up a context to draw into.
         let context = &Context::abs(args.width as f64, args.height as f64);
         // Clear the screen.
@@ -44,7 +45,7 @@ impl Game for App {
             .draw(&mut self.gl);
     }
 
-    fn update(&mut self, args: &UpdateArgs) {
+    fn update(&mut self, _: &mut W, args: &UpdateArgs) {
         // Rotate 2 radians per second.
         self.rotation += 2.0 * args.dt;
     }
