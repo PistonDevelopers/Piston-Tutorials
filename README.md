@@ -1,4 +1,4 @@
-# Piston-Tutorials
+# Piston-Tutorials [![Build Status](https://travis-ci.org/PistonDevelopers/Piston-Tutorials.svg)](https://travis-ci.org/PistonDevelopers/Piston-Tutorials)
 
 This is a repository for examples of Piston projects that have are
 accompanied by written tutorials explaining core concepts for that
