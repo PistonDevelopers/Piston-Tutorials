@@ -1,13 +1,10 @@
+language: rust
 os:
     - linux
     - osx
 env:
     global:
         - LD_LIBRARY_PATH: /usr/local/lib
-before_install:
-    - curl http://www.rust-lang.org/rustup.sh | sudo -E sh
-    - rustc -v
-    - cargo -V
 install:
     - sudo apt-get install libXxf86vm-dev
     - git clone https://github.com/glfw/glfw.git
@@ -17,6 +14,10 @@ install:
     - make
     - sudo make install
     - cd ../
+before_script:
+    - rustc -v
+    - cargo -V
 script:
     - cd ./getting-started
-    - cargo build
+    - cargo build -v
+    - cargo test -v
