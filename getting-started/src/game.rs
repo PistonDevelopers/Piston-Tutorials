@@ -3,15 +3,14 @@ extern crate piston;
 extern crate glfw_game_window;
 extern crate opengl_graphics;
 
-use glfw_game_window::GameWindowGLFW;
+use glfw_game_window::GameWindowGLFW as Window;
 use opengl_graphics::Gl;
 
 use piston::{
-    Game,
     GameWindow,
-    GameWindowSettings,
-    GameIteratorSettings,
+    Render,
     RenderArgs,
+    Update,
     UpdateArgs
 };
 
@@ -28,7 +27,7 @@ pub struct App {
     rotation: f64 // Rotation for the square.
 }
 
-impl <W: GameWindow> Game<W> for App {
+impl<W: GameWindow> App {
     fn render(&mut self, _: &mut W, args: &RenderArgs) {
         // Set up a context to draw into.
         let context = &Context::abs(args.width as f64, args.height as f64);
@@ -53,8 +52,9 @@ impl <W: GameWindow> Game<W> for App {
 
 fn main() {
     // Create a GLFW window.
-    let mut window = GameWindowGLFW::new(
-        GameWindowSettings {
+    let mut window = Window::new(
+        piston::shader_version::opengl::OpenGL_3_2,
+        piston::GameWindowSettings {
             title: "Hello Piston".to_string(),
             size: [800, 800],
             fullscreen: false,
@@ -63,12 +63,21 @@ fn main() {
     );
 
     // Some settings for how the game should be run.
-    let game_iter_settings = GameIteratorSettings {
+    let game_iter_settings = piston::GameIteratorSettings {
         updates_per_second: 60,
         max_frames_per_second: 60
     };
 
     // Create a new game and run it.
     let mut app = App { gl: Gl::new(), rotation: 0.0 };
-    app.run(&mut window, &game_iter_settings);
+
+    for e in piston::GameIterator::new(&mut window, &game_iter_settings) {
+        match e {
+            Render(_args) =>
+                app.render(&mut window, &_args),
+            Update(_args) =>
+                app.update(&mut window, &_args),
+            _ => {},
+        }
+    }
 }
