@@ -31,48 +31,31 @@ Parts of the Piston project depend on native C libraries.  For example, in
 order to display a window and hook it up to an OpenGL context, we can use
 either GLFW or SDL2 as the implementation of the windowing system.
 
-The rest of this tutorial uses GLFW for windowing, so we will need to
-install the GLFW native library.
+The rest of this tutorial uses SDL2 for windowing, so we will need to
+install the SDL2 native library.
 
 ### GLFW on OSX
 
-If you use [Homebrew](http://brew.sh), installing GLFW is as simple as
-`brew install --static homebrew/versions/glfw3`.  That's it.  Done.
+If you use [Homebrew](http://brew.sh), installing sdl2 is as simple as
+`brew install sdl2`.  That's it.  Done.
 
-Otherwise, follow the steps under [GLFW on Linux](#glfw-on-linux)
+Otherwise, follow the steps under [sdl2 on Linux](#sdl2-on-linux)
 
 Honestly, it's probably easier to just install Homebrew and then follow the
 homebrew instructions.
 
-### GLFW on Linux
+### SDL2 on Ubuntu
+If you are on Ubuntu Trusty, you can run
+`sudo apt-get install libsdl2-dev`!
 
-Install the system level dependencies `xorg-dev` and `libglu1-mesa-dev`
-using apt-get, yum, or by building from source.
-
-0. Make sure that `/usr/local/lib/` is on your static library path.
-   To do this, in your `.bashrc`, add the line:
-   `export LD_LIBRARY_PATH='/usr/local/lib'`
-1. Install CMake.  CMake is the program that is used to build GLFW
-   from scratch.
-2. Install git.  Git is used to download GLFW.
-3. `cd` to some empty working directory.
-4. `git clone https://github.com/glfw/glfw.git`
-5. `cd glfw`
-6. `git checkout 3.0.3`
-7. `cmake -DCMAKE_C_FLAGS=-fPIC -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF .`
-8. `make`
-9. `sudo make install`
+### SDL2 on Linux
+Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/setting-up-sdl2-in-ubuntu-or-linux-mint.html)
 
 #### At this stage
+`ldconfig -p | grep libSDL2` should print out some paths to the .so libraries.
 
-* `echo $LD_LIBRARY_PATH` should contain `/usr/local/lib`.
-* `ls /usr/local/lib/` should contain `libglfw3.a`.
-
-
-### GLFW on Windows
+### SDL2 on Windows
 TODO
-
-
 
 ## Setting Up The Project
 
@@ -129,8 +112,8 @@ For example, when it comes to displaying a window and getting keyboard events
 in a cross-platform manner, you can use either GLFW or SDL2.
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
 with an OpenGL context.
-In this tutorial I chose GLFW, so you will notice that in the cargo file, we
-imported `glfw_game_window`.
+In this tutorial I chose SDL2, so you will notice that in the cargo file, we
+imported `sdl2_game_window`.
 `opengl_graphics` is another backend that implements the interface defined in
 `graphics`.
 `graphics` is a 2d graphics API that doesn't care about how things are
