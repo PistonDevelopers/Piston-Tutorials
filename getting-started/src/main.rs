@@ -2,9 +2,11 @@ extern crate graphics;
 extern crate piston;
 extern crate sdl2_game_window;
 extern crate opengl_graphics;
+extern crate shader_version;
 
 use sdl2_game_window::WindowSDL2;
 use opengl_graphics::Gl;
+use shader_version::opengl::OpenGL_2_1;
 
 use piston::{
     Window,
@@ -64,7 +66,7 @@ fn main() {
     };
 
     // Create a new game and run it.
-    let mut app = App { gl: Gl::new(), rotation: 0.0 };
+    let mut app = App { gl: Gl::new(OpenGL_2_1), rotation: 0.0 };
 
     for e in piston::EventIterator::new(&mut window, &event_settings) {
         match e {
