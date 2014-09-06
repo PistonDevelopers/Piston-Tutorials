@@ -58,7 +58,7 @@ fn main() {
     );
 
     // Some settings for how the game should be run.
-    let game_iter_settings = piston::EventSettings {
+    let event_settings = piston::EventSettings {
         updates_per_second: 60,
         max_frames_per_second: 60
     };
