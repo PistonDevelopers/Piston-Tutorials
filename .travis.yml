@@ -2,17 +2,16 @@ language: rust
 os:
     - linux
     - osx
-env:
-    global:
-        - LD_LIBRARY_PATH: /usr/local/lib
 install:
-    - sudo apt-get install libXxf86vm-dev
-    - git clone https://github.com/glfw/glfw.git
-    - cd glfw
-    - git checkout 3.0.3
-    - cmake -DCMAKE_C_FLAGS=-fPIC -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF .
+    - wget https://www.libsdl.org/release/SDL2-2.0.3.tar.gz
+    - tar -xvzf SDL2-2.0.3.tar.gz
+    - cd SDL2*
+    - sudo apt-get update
+    -  sudo apt-get install build-essential xorg-dev libudev-dev libts-dev libgl1-mesa-dev libglu1-mesa-dev libasound2-dev libpulse-dev libopenal-dev libogg-dev libvorbis-dev libaudiofile-dev libpng12-dev libfreetype6-dev libusb-dev libdbus-1-dev zlib1g-dev libdirectfb-dev
+    - ./configure
     - make
     - sudo make install
+    - sudo ldconfig
     - cd ../
 before_script:
     - rustc -v

@@ -1,0 +1,15 @@
+[package]
+name = "piston_tutorials"
+version = "0.0.1"
+authors = [
+    "TyOverby <ty@pre-alpha.com>",
+    "Indiv0 <contact@nikitapek.in>",
+    "maxsnew"
+]
+
+[dependencies.md_rel]
+git = "https://github.com/TyOverby/md_rel.git"
+
+[[bin]]
+name = "markdown_compiler"
+path = "tutorial_util/main.rs"

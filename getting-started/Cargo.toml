@@ -2,15 +2,18 @@
 
 name = "getting-started"
 version = "0.0.0"
-authors = ["TyOverby <ty@pre-alpha.com>"]
+authors = [
+    "TyOverby <ty@pre-alpha.com>",
+    "Nikita Pekin <contact@nikitapek.in>"
+]
 
 [dependencies.piston]
 
-git = "https://github.com/PistonDevelopers/piston"
+git = "https://github.com/PistonDevelopers/piston.git"
 
-[dependencies.glfw_game_window]
+[dependencies.sdl2_game_window]
 
-git = "https://github.com/PistonDevelopers/glfw_game_window.git"
+git = "https://github.com/PistonDevelopers/sdl2_game_window.git"
 
 [dependencies.graphics]
 
@@ -19,8 +22,3 @@ git = "https://github.com/PistonDevelopers/rust-graphics.git"
 [dependencies.opengl_graphics]
 
 git = "https://github.com/PistonDevelopers/opengl_graphics.git"
-
-[[bin]]
-
-name = "game"
-path = "./src/game.rs"

@@ -1,10 +1,12 @@
 extern crate graphics;
 extern crate piston;
-extern crate glfw_game_window;
+extern crate sdl2_game_window;
 extern crate opengl_graphics;
+extern crate shader_version;
 
-use glfw_game_window::WindowGLFW;
+use sdl2_game_window::WindowSDL2;
 use opengl_graphics::Gl;
+use shader_version::opengl::OpenGL_2_1;
 
 use piston::{
     Window,
@@ -51,16 +53,10 @@ impl<W: Window> App {
 }
 
 fn main() {
-    // Create a GLFW window.
-    let mut window = WindowGLFW::new(
-        piston::shader_version::opengl::OpenGL_3_2,
-        piston::WindowSettings {
-            title: "Hello Piston".to_string(),
-            size: [800, 800],
-            samples: 1,
-            fullscreen: false,
-            exit_on_esc: true
-        }
+    // Create an SDL window.
+    let mut window = WindowSDL2::new(
+        piston::shader_version::opengl::OpenGL_2_1,
+        piston::WindowSettings::default()
     );
 
     // Some settings for how the game should be run.
@@ -70,7 +66,7 @@ fn main() {
     };
 
     // Create a new game and run it.
-    let mut app = App { gl: Gl::new(), rotation: 0.0 };
+    let mut app = App { gl: Gl::new(OpenGL_2_1), rotation: 0.0 };
 
     for e in piston::EventIterator::new(&mut window, &event_settings) {
         match e {

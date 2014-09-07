@@ -1,0 +1,20 @@
+[root]
+name = "piston_tutorials"
+version = "0.0.1"
+dependencies = [
+ "md_rel 0.0.1 (git+https://github.com/TyOverby/md_rel.git#7c7fb1190ff147143652a25c4022dd1c9b6d35ec)",
+]
+
+[[package]]
+name = "md_rel"
+version = "0.0.1"
+source = "git+https://github.com/TyOverby/md_rel.git#7c7fb1190ff147143652a25c4022dd1c9b6d35ec"
+dependencies = [
+ "try_or 0.0.1 (git+https://github.com/TyOverby/try_or.git#809e14828cff4e91b29bd7b4c858f6c33da6cc6a)",
+]
+
+[[package]]
+name = "try_or"
+version = "0.0.1"
+source = "git+https://github.com/TyOverby/try_or.git#809e14828cff4e91b29bd7b4c858f6c33da6cc6a"
+
