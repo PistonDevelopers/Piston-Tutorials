@@ -68,13 +68,17 @@ fn main() {
     // Create a new game and run it.
     let mut app = App { gl: Gl::new(OpenGL_2_1), rotation: 0.0 };
 
-    for e in piston::EventIterator::new(&mut window, &event_settings) {
+    // TODO: Change this back to a for loop after rust is fixed.
+    let event_iterator = piston::EventIterator::new(&mut window, &event_settings);
+    loop {
+        let e = match event_iterator.next() {
+            None => {break;},
+            Some(e) => e
+        };
         match e {
-            Render(_args) =>
-                app.render(&mut window, &_args),
-            Update(_args) =>
-                app.update(&mut window, &_args),
-            _ => {},
+            Render(_args) => app.render(&mut window, &_args),
+            Update(_args) => app.update(&mut window, &_args),
+            _ => {  }
         }
     }
 }
