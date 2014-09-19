@@ -1,4 +1,4 @@
-### Spinning Square [![Build Status](https://travis-ci.org/TyOverby/Piston-Tutorial.svg?branch=master)](https://travis-ci.org/TyOverby/Piston-Tutorial)
+### Spinning Square
 
 In this tutorial, I hope to get you from an empty Cargo project to having a
 window with a rotating square in it.
