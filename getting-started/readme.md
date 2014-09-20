@@ -1,4 +1,4 @@
-### Spinning Square [![Build Status](https://travis-ci.org/PistonDevelopers/Piston-Tutorials.svg?branch=master)](https://travis-ci.org/PistonDevelopers/Piston-Tutorials)
+### Spinning Square [![Build Status](https://travis-ci.org/TyOverby/Piston-Tutorial.svg?branch=master)](https://travis-ci.org/TyOverby/Piston-Tutorial)
 
 In this tutorial, I hope to get you from an empty Cargo project to having a
 window with a rotating square in it.
@@ -91,7 +91,7 @@ git = "https://github.com/PistonDevelopers/sdl2_game_window.git"
 
 [dependencies.graphics]
 
-git = "https://github.com/PistonDevelopers/rust-graphics.git"
+git = "https://github.com/PistonDevelopers/graphics.git"
 
 [dependencies.opengl_graphics]
 
@@ -210,15 +210,32 @@ fn main() {
     // Create a new game and run it.
     let mut app = App { gl: Gl::new(OpenGL_2_1), rotation: 0.0 };
 
-    for e in piston::EventIterator::new(&mut window, &event_settings) {
+    // TODO: Change this back to a for loop after rust is fixed.
+    let mut event_iter = piston::EventIterator::new(&mut window, &event_settings);
+    loop {
+        let e = match event_iter.next() {
+            Some(e) => e,
+            None => { break; }
+        };
         match e {
-            Render(_args) =>
-                app.render(&mut window, &_args),
-            Update(_args) =>
-                app.update(&mut window, &_args),
-            _ => {},
+            Render(_args) => app.render(event_iter.window, &_args),
+            Update(_args) => app.update(event_iter.window, &_args),
+            _ => {  }
         }
     }
+
+    /*
+     * This is broken due to a bug in rustc.
+     * For more information, please read:
+     * https://github.com/PistonDevelopers/piston/issues/641
+
+    for e in event_iter {
+        match e {
+            Render(_args) => app.render(event_iter.window, &_args),
+            Update(_args) => app.update(event_iter.window, &_args),
+            _ => {  }
+        }
+    }*/
 }
 
 ```
