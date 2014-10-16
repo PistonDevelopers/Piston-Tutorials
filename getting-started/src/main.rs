@@ -6,7 +6,7 @@ extern crate shader_version;
 
 use sdl2_game_window::WindowSDL2;
 use opengl_graphics::Gl;
-use shader_version::opengl::OpenGL_2_1;
+use shader_version::opengl::OpenGL_3_2;
 
 use piston::{
     Window,
@@ -55,7 +55,7 @@ impl<W: Window> App {
 fn main() {
     // Create an SDL window.
     let mut window = WindowSDL2::new(
-        piston::shader_version::opengl::OpenGL_2_1,
+        piston::shader_version::opengl::OpenGL_3_2,
         piston::WindowSettings::default()
     );
 
@@ -66,7 +66,7 @@ fn main() {
     };
 
     // Create a new game and run it.
-    let mut app = App { gl: Gl::new(OpenGL_2_1), rotation: 0.0 };
+    let mut app = App { gl: Gl::new(OpenGL_3_2), rotation: 0.0 };
 
     // TODO: Change this back to a for loop after rust is fixed.
     let mut event_iter = piston::EventIterator::new(&mut window, &event_settings);
