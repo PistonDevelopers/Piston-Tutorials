@@ -29,8 +29,8 @@ pub struct App {
     rotation: f64 // Rotation for the square.
 }
 
-impl<W: Window> App {
-    fn render(&mut self, _: &mut W, args: &RenderArgs) {
+impl App {
+    fn render<W: Window>(&mut self, _: &mut W, args: &RenderArgs) {
         // Set up a context to draw into.
         let context = &Context::abs(args.width as f64, args.height as f64);
         // Clear the screen.
@@ -46,7 +46,7 @@ impl<W: Window> App {
             .draw(&mut self.gl);
     }
 
-    fn update(&mut self, _: &mut W, args: &UpdateArgs) {
+    fn update<W: Window>(&mut self, _: &mut W, args: &UpdateArgs) {
         // Rotate 2 radians per second.
         self.rotation += 2.0 * args.dt;
     }
