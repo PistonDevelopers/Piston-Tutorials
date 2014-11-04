@@ -1,10 +1,10 @@
 extern crate graphics;
 extern crate piston;
-extern crate sdl2_game_window;
+extern crate sdl2_window;
 extern crate opengl_graphics;
 extern crate shader_version;
 
-use sdl2_game_window::WindowSDL2;
+use sdl2_window::Sdl2Window;
 use opengl_graphics::Gl;
 use shader_version::opengl::OpenGL_3_2;
 
@@ -54,7 +54,7 @@ impl App {
 
 fn main() {
     // Create an SDL window.
-    let mut window = WindowSDL2::new(
+    let mut window = Sdl2Window::new(
         piston::shader_version::opengl::OpenGL_3_2,
         piston::WindowSettings::default()
     );
