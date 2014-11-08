@@ -1,5 +1,5 @@
 ## Getting Started Spinning Square
-### A sinning square
+### A spinning square
 
 [![Build Status](https://travis-ci.org/PistonDevelopers/Piston-Tutorials.svg?branch=master)](https://travis-ci.org/PistonDevelopers/Piston-Tutorials)
 
