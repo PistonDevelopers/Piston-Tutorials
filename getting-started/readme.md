@@ -117,7 +117,7 @@ in a cross-platform manner, you can use either GLFW or SDL2.
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
 with an OpenGL context.
 In this tutorial I chose SDL2, so you will notice that in the cargo file, we
-imported `sdl2_game_window`.
+imported `sdl2_window`.
 `opengl_graphics` is another backend that implements the interface defined in
 `graphics`.
 `graphics` is a 2d graphics API that doesn't care about how things are
@@ -141,7 +141,7 @@ our application.
 
 ```bash
 mkdir src
-touch src/game.rs
+touch src/main.rs
 ```
 
 Now in your favorite editor edit `src/main.rs`.
@@ -210,7 +210,7 @@ impl App {
 fn main() {
     // Create an SDL window.
     let window = Sdl2Window::new(
-        piston::shader_version::opengl::OpenGL_3_2,
+        OpenGL_3_2,
         piston::WindowSettings::default()
     );
 
