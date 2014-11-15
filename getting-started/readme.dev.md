@@ -87,7 +87,7 @@ in a cross-platform manner, you can use either GLFW or SDL2.
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
 with an OpenGL context.
 In this tutorial I chose SDL2, so you will notice that in the cargo file, we
-imported `sdl2_game_window`.
+imported `sdl2_window`.
 `opengl_graphics` is another backend that implements the interface defined in
 `graphics`.
 `graphics` is a 2d graphics API that doesn't care about how things are
