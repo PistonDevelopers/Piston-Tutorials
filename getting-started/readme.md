@@ -84,6 +84,10 @@ authors = [
     "Nikita Pekin <contact@nikitapek.in>"
 ]
 
+[[bin]]
+
+name = "game"
+
 [dependencies.piston]
 
 git = "https://github.com/PistonDevelopers/piston.git"
@@ -232,6 +236,8 @@ If all goes well, you should have the binary `game` inside the `target`
 directory.
 
 Run it by executing `./target/game`.
+
+You can also directly run it by running `cargo run`
 
 On your screen you should have a rotating square that looks like this:
 

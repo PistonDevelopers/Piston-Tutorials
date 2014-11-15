@@ -7,6 +7,10 @@ authors = [
     "Nikita Pekin <contact@nikitapek.in>"
 ]
 
+[[bin]]
+
+name = "game"
+
 [dependencies.piston]
 
 git = "https://github.com/PistonDevelopers/piston.git"
