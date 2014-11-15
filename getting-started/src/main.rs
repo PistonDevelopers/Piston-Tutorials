@@ -61,7 +61,7 @@ impl App {
 fn main() {
     // Create an SDL window.
     let window = Sdl2Window::new(
-        piston::shader_version::opengl::OpenGL_3_2,
+        OpenGL_3_2,
         piston::WindowSettings::default()
     );
 
