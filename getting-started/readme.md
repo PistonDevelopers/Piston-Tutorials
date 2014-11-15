@@ -230,7 +230,14 @@ fn main() {
 
 Awesome!  Now that we have the game code, let's get it running!
 With Cargo, downloaing dependencies and building the application is as
-simple as running `cargo run` from the main project directory..
+simple as running `cargo build` from the main project directory..
+
+If all goes well, you should have the binary `game` inside the `target`
+directory.
+
+Run it by executing `./target/game`.
+
+You can also directly run it by running `cargo run`
 
 On your screen you should have a rotating square that looks like this:
 

@@ -129,6 +129,8 @@ directory.
 
 Run it by executing `./target/game`.
 
+You can also directly run it by running `cargo run`
+
 On your screen you should have a rotating square that looks like this:
 
 ![Result](./out.gif)
