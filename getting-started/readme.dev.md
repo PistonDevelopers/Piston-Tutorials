@@ -111,7 +111,7 @@ our application.
 
 ```bash
 mkdir src
-touch src/game.rs
+touch src/main.rs
 ```
 
 Now in your favorite editor edit `src/main.rs`.
