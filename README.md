@@ -26,3 +26,5 @@ readme.md file; the preprocessor will do that for you!
 In order to run the pre-processor, simply invoke `cargo run` 
 from the root directory (not the sub-tutorial directory) and 
 it will rebuild all the markdown files that it knows about.
+
+[How to contribute](https://github.com/PistonDevelopers/piston/blob/master/CONTRIBUTING.md)
