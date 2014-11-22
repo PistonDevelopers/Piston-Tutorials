@@ -20,7 +20,7 @@ use graphics::{
     AddRectangle,
     AddColor,
     Draw,
-    RelativeTransform2d,
+    RelativeTransform,
 };
 
 use event::{
