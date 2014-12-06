@@ -7,7 +7,7 @@ extern crate event;
 
 use sdl2_window::Sdl2Window;
 use opengl_graphics::Gl;
-use shader_version::opengl::OpenGL_3_2;
+use shader_version::opengl::OpenGL::OpenGL_3_2;
 
 use std::cell::RefCell;
 use piston::{
