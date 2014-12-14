@@ -92,15 +92,15 @@ name = "game"
 
 git = "https://github.com/PistonDevelopers/piston.git"
 
-[dependencies.sdl2_window]
+[dependencies.pistoncore-sdl2_window]
 
 git = "https://github.com/PistonDevelopers/sdl2_window.git"
 
-[dependencies.graphics]
+[dependencies.piston2d-graphics]
 
 git = "https://github.com/PistonDevelopers/graphics.git"
 
-[dependencies.opengl_graphics]
+[dependencies.piston2d-opengl_graphics]
 
 git = "https://github.com/PistonDevelopers/opengl_graphics.git"
 
