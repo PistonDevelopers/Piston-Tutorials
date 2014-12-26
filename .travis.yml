@@ -15,9 +15,6 @@ install:
     - sudo make install
     - sudo ldconfig
     - cd ../
-before_script:
-    - rustc -v
-    - cargo -V
 script:
     - cd ./getting-started
     - cargo build -v
