@@ -21,7 +21,7 @@ you've finished.
 
 #### At this stage
 
-* You should be able to run the command `rustc -v`
+* You should be able to run the command `rustc -V`
 * You should be able to run the command `cargo -V`
 
 If you have failed either of these, please review the getting started
@@ -76,22 +76,16 @@ Now in your favorite editor, add project settings and dependencies to
 
 ^code(./Cargo.toml)
 
-You might be thinking that this is a lot of dependencies for such a simple
-example application.
-This is because of how the Piston Projects are organized.
-The `piston` and `graphics` libraries are able to do a lot of work by
-themselves, but they are made to be completely independent of a
-backing implementation.
-For example, when it comes to displaying a window and getting keyboard events
-in a cross-platform manner, you can use either GLFW or SDL2.
+When writing an application, you can choose between using the `piston` library
+that comes with a default window and graphics back-end (SDL2 + OpenGL),
+or you can use the libraries directly.
+The `piston` library also reexports several libraries that are useful in many projects.
+
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
 with an OpenGL context.
-In this tutorial I chose SDL2, so you will notice that in the cargo file, we
-imported `sdl2_window`.
 `opengl_graphics` is another backend that implements the interface defined in
 `graphics`.
-`graphics` is a 2d graphics API that doesn't care about how things are
-*actually* drawn to the screen.
+`graphics` is a 2d graphics API that triangulates shapes and needs a backend for the actual rendering.
 If you implement the `graphics` interface yourself, you could route it
 through directx, or render straight to a png.
 In this tutorial, we are rendering using OpenGL, so we'll use `opengl_graphics`.

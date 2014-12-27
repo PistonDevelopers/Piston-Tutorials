@@ -21,7 +21,7 @@ you've finished.
 
 #### At this stage
 
-* You should be able to run the command `rustc -v`
+* You should be able to run the command `rustc -V`
 * You should be able to run the command `cargo -V`
 
 If you have failed either of these, please review the getting started
@@ -92,36 +92,19 @@ name = "game"
 
 git = "https://github.com/PistonDevelopers/piston.git"
 
-[dependencies.pistoncore-sdl2_window]
-
-git = "https://github.com/PistonDevelopers/sdl2_window.git"
-
-[dependencies.piston2d-graphics]
-
-git = "https://github.com/PistonDevelopers/graphics.git"
-
-[dependencies.piston2d-opengl_graphics]
-
-git = "https://github.com/PistonDevelopers/opengl_graphics.git"
 
 ```
 
-You might be thinking that this is a lot of dependencies for such a simple
-example application.
-This is because of how the Piston Projects are organized.
-The `piston` and `graphics` libraries are able to do a lot of work by
-themselves, but they are made to be completely independent of a
-backing implementation.
-For example, when it comes to displaying a window and getting keyboard events
-in a cross-platform manner, you can use either GLFW or SDL2.
+When writing an application, you can choose between using the `piston` library
+that comes with a default window and graphics back-end (SDL2 + OpenGL),
+or you can use the libraries directly.
+The `piston` library also reexports several libraries that are useful in many projects.
+
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
 with an OpenGL context.
-In this tutorial I chose SDL2, so you will notice that in the cargo file, we
-imported `sdl2_window`.
 `opengl_graphics` is another backend that implements the interface defined in
 `graphics`.
-`graphics` is a 2d graphics API that doesn't care about how things are
-*actually* drawn to the screen.
+`graphics` is a 2d graphics API that triangulates shapes and needs a backend for the actual rendering.
 If you implement the `graphics` interface yourself, you could route it
 through directx, or render straight to a png.
 In this tutorial, we are rendering using OpenGL, so we'll use `opengl_graphics`.
@@ -147,81 +130,55 @@ touch src/main.rs
 Now in your favorite editor edit `src/main.rs`.
 
 ```rust
-extern crate graphics;
 extern crate piston;
-extern crate sdl2_window;
-extern crate opengl_graphics;
-extern crate shader_version;
-extern crate event;
 
-use sdl2_window::Sdl2Window;
-use opengl_graphics::Gl;
-use shader_version::opengl::OpenGL::OpenGL_3_2;
-
-use std::cell::RefCell;
-use piston::{
-    RenderArgs,
-    UpdateArgs
-};
-
-use graphics::{
-    Context,
-    AddRectangle,
-    AddColor,
-    Draw,
-    RelativeTransform,
-};
-
-use event::{
-    Events,
-    Window,
-    RenderEvent,
-    UpdateEvent,
-};
-
+#[allow(missing_copy_implementations)]
 pub struct App {
-    gl: Gl,       // OpenGL drawing backend.
-    rotation: f64 // Rotation for the square.
+    rotation: f64,      // Rotation for the square.
 }
 
 impl App {
-    fn render<W: Window>(&mut self, _: &mut W, args: &RenderArgs) {
-        // Set up a context to draw into.
-        let context = &Context::abs(args.width as f64, args.height as f64);
-        // Clear the screen.
-        context.rgba(0.0,1.0,0.0,1.0).draw(&mut self.gl);
+    fn render(&mut self, args: &piston::RenderArgs) {
+        use piston::graphics::{ Rectangle, RelativeTransform };
+
+        piston::render_2d_opengl(
+            // Calling `render_2d_opengl` inside the closure is unsafe
+            unsafe { piston::DANGER::new() },
+            Some([0.0, 1.0, 0.0, 1.0]),
+            |c, g| {
 
         // Draw a box rotating around the middle of the screen.
-        context
-            .trans((args.width / 2) as f64, (args.height / 2) as f64)
+        let center_context = &c.trans((args.width / 2) as f64, (args.height / 2) as f64)
             .rot_rad(self.rotation)
-            .rect(0.0, 0.0, 50.0, 50.0)
-            .rgba(1.0, 0.0, 0.0,1.0)
-            .trans(-25.0, -25.0)
-            .draw(&mut self.gl);
+            .trans(-25.0, -25.0);
+        Rectangle::new([1.0, 0.0, 0.0, 1.0]).draw([0.0, 0.0, 50.0, 50.0], center_context, g);
+
+            }
+        );
     }
 
-    fn update<W: Window>(&mut self, _: &mut W, args: &UpdateArgs) {
+    fn update(&mut self, args: &piston::UpdateArgs) {
         // Rotate 2 radians per second.
         self.rotation += 2.0 * args.dt;
     }
 }
 
 fn main() {
-    // Create an SDL window.
-    let window = Sdl2Window::new(
-        OpenGL_3_2,
-        piston::WindowSettings::default()
-    );
+    piston::start(
+        piston::shader_version::OpenGL::_3_2,
+        piston::WindowSettings::default(),
+        || {
+   
+    let mut app = App { rotation: 0.0 }; 
+    for e in piston::events() {
+        use piston::event::{ RenderEvent, UpdateEvent };
 
-    // Create a new game and run it.
-    let mut app = App { gl: Gl::new(OpenGL_3_2), rotation: 0.0 };
-
-    let window = RefCell::new(window);
-    for e in Events::new(&window) {
-        e.render(|r| app.render(window.borrow_mut().deref_mut(), r));
-        e.update(|u| app.update(window.borrow_mut().deref_mut(), u));
+        e.render(|r| app.render(r));
+        e.update(|u| app.update(u));
     }
+
+        }
+    );
 }
 
 ```
