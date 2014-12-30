@@ -5,7 +5,7 @@ extern crate opengl_graphics;
 extern crate shader_version;
 extern crate event;
 
-use sdl2_window::Sdl2Window;
+use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::Gl;
 use shader_version::opengl::OpenGL::_3_2;
 
@@ -23,7 +23,6 @@ use graphics::{
 
 use event::{
     Events,
-    Window,
     RenderEvent,
     UpdateEvent,
 };
@@ -34,7 +33,7 @@ pub struct App {
 }
 
 impl App {
-    fn render<W: Window>(&mut self, _: &mut W, args: &RenderArgs) {
+    fn render(&mut self, _: &mut Window, args: &RenderArgs) {
         // Set up a context to draw into.
         let context = &Context::abs(args.width as f64, args.height as f64);
         // Clear the screen
@@ -47,7 +46,7 @@ impl App {
         Rectangle::new([1.0, 0.0, 0.0, 1.0]).draw([0.0, 0.0, 50.0, 50.0], center_context, &mut self.gl);
     }
 
-    fn update<W: Window>(&mut self, _: &mut W, args: &UpdateArgs) {
+    fn update(&mut self, _: &mut Window, args: &UpdateArgs) {
         // Rotate 2 radians per second.
         self.rotation += 2.0 * args.dt;
     }
@@ -55,7 +54,7 @@ impl App {
 
 fn main() {
     // Create an SDL window.
-    let window = Sdl2Window::new(
+    let window = Window::new(
         _3_2,
         piston::WindowSettings::default()
             );
