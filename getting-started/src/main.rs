@@ -1,71 +1,50 @@
-extern crate graphics;
 extern crate piston;
-extern crate sdl2_window;
-extern crate opengl_graphics;
-extern crate shader_version;
-extern crate event;
 
-use sdl2_window::Sdl2Window;
-use opengl_graphics::Gl;
-use shader_version::opengl::OpenGL::_3_2;
-
-use std::cell::RefCell;
-use piston::{
-    RenderArgs,
-    UpdateArgs
-};
-
-use graphics::{
-    Context,
-    Rectangle,
-    RelativeTransform,
-};
-
-use event::{
-    Events,
-    Window,
-    RenderEvent,
-    UpdateEvent,
-};
-
+#[allow(missing_copy_implementations)]
 pub struct App {
-    gl: Gl,       // OpenGL drawing backend.
-    rotation: f64 // Rotation for the square.
+    rotation: f64,      // Rotation for the square.
 }
 
 impl App {
-    fn render<W: Window>(&mut self, _: &mut W, args: &RenderArgs) {
-        // Set up a context to draw into.
-        let context = &Context::abs(args.width as f64, args.height as f64);
-        // Clear the screen
-        graphics::clear([0.0,1.0,0.0,1.0], &mut self.gl);
+    fn render(&mut self, args: &piston::RenderArgs) {
+        use piston::graphics::{ Rectangle, RelativeTransform };
+
+        piston::render_2d_opengl(
+            // Calling `render_2d_opengl` inside the closure is unsafe
+            unsafe { piston::DANGER::new() },
+            Some([0.0, 1.0, 0.0, 1.0]),
+            |c, g| {
 
         // Draw a box rotating around the middle of the screen.
-        let center_context = &context.trans((args.width / 2) as f64, (args.height / 2) as f64)
+        let center_context = &c.trans((args.width / 2) as f64, (args.height / 2) as f64)
             .rot_rad(self.rotation)
             .trans(-25.0, -25.0);
-        Rectangle::new([1.0, 0.0, 0.0, 1.0]).draw([0.0, 0.0, 50.0, 50.0], center_context, &mut self.gl);
+        Rectangle::new([1.0, 0.0, 0.0, 1.0]).draw([0.0, 0.0, 50.0, 50.0], center_context, g);
+
+            }
+        );
     }
 
-    fn update<W: Window>(&mut self, _: &mut W, args: &UpdateArgs) {
+    fn update(&mut self, args: &piston::UpdateArgs) {
         // Rotate 2 radians per second.
         self.rotation += 2.0 * args.dt;
     }
 }
 
 fn main() {
-    // Create an SDL window.
-    let window = Sdl2Window::new(
-        _3_2,
-        piston::WindowSettings::default()
-            );
+    piston::start(
+        piston::shader_version::OpenGL::_3_2,
+        piston::WindowSettings::default(),
+        || {
+   
+    let mut app = App { rotation: 0.0 }; 
+    for e in piston::events() {
+        use piston::event::{ RenderEvent, UpdateEvent };
 
-    // Create a new game and run it.
-    let mut app = App { gl: Gl::new(_3_2), rotation: 0.0 };
-
-    let window = RefCell::new(window);
-    for e in Events::new(&window) {
-        e.render(|r| app.render(window.borrow_mut().deref_mut(), r));
-        e.update(|u| app.update(window.borrow_mut().deref_mut(), u));
+        e.render(|r| app.render(r));
+        e.update(|u| app.update(u));
     }
+
+        }
+    );
 }
