@@ -22,7 +22,6 @@ use graphics::{
 };
 
 use event::{
-    Events,
     RenderEvent,
     UpdateEvent,
 };
@@ -63,8 +62,12 @@ fn main() {
     let mut app = App { gl: Gl::new(_3_2), rotation: 0.0 };
 
     let window = RefCell::new(window);
-    for e in Events::new(&window) {
-        e.render(|r| app.render(window.borrow_mut().deref_mut(), r));
-        e.update(|u| app.update(window.borrow_mut().deref_mut(), u));
+    for e in event::events(&window) {
+        if let Some(r) = e.render_args() {
+            app.render(&mut *window.borrow_mut(), &r);
+        }
+        if let Some(u) = e.update_args() {
+            app.update(&mut *window.borrow_mut(), &u);
+        }
     }
 }
