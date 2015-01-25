@@ -57,7 +57,13 @@ Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/s
 `ldconfig -p | grep libSDL2` should print out some paths to the .so libraries.
 
 ### SDL2 on Windows
-TODO
+Copy SDL2.dll to project directory.
+- For 32-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/SDL2.dll?raw=true) .
+- For 64-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/SDL2.dll?raw=true) .
+
+Copy libSDL2.dll.a to  `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
+- For 32-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libSDL2.dll.a?raw=true) .
+- For 64-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libSDL2.dll.a?raw=true) .
 
 ## Setting Up The Project
 
