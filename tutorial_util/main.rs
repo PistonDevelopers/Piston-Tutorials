@@ -8,7 +8,7 @@ fn main() {
         match transform_file(file) {
             Ok(_) => {  },
             Err(x) => println!(
-                "Failed to compile file {} with error {}", file, x)
+                "Failed to compile file {} with error {:?}", file, x)
         }
     }
 }

@@ -151,12 +151,10 @@ extern crate graphics;
 extern crate piston;
 extern crate sdl2_window;
 extern crate opengl_graphics;
-extern crate shader_version;
-extern crate event;
 
 use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::Gl;
-use shader_version::opengl::OpenGL::_3_2;
+use piston::shader_version::opengl::OpenGL::_3_2;
 
 use std::cell::RefCell;
 use piston::{
@@ -170,8 +168,8 @@ use graphics::{
     RelativeTransform,
 };
 
-use event::{
-    Events,
+use piston::event::{
+    self,
     RenderEvent,
     UpdateEvent,
 };
@@ -212,9 +210,13 @@ fn main() {
     let mut app = App { gl: Gl::new(_3_2), rotation: 0.0 };
 
     let window = RefCell::new(window);
-    for e in Events::new(&window) {
-        e.render(|r| app.render(window.borrow_mut().deref_mut(), r));
-        e.update(|u| app.update(window.borrow_mut().deref_mut(), u));
+    for e in event::events(&window) {
+        if let Some(r) = e.render_args() {
+            app.render(&mut *window.borrow_mut(), &r);
+        }
+        if let Some(u) = e.update_args() {
+            app.update(&mut *window.borrow_mut(), &u);
+        }
     }
 }
 

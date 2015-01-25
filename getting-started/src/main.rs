@@ -2,12 +2,10 @@ extern crate graphics;
 extern crate piston;
 extern crate sdl2_window;
 extern crate opengl_graphics;
-extern crate shader_version;
-extern crate event;
 
 use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::Gl;
-use shader_version::opengl::OpenGL::_3_2;
+use piston::shader_version::opengl::OpenGL::_3_2;
 
 use std::cell::RefCell;
 use piston::{
@@ -21,7 +19,8 @@ use graphics::{
     RelativeTransform,
 };
 
-use event::{
+use piston::event::{
+    self,
     RenderEvent,
     UpdateEvent,
 };
