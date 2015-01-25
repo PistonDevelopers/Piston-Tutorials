@@ -169,7 +169,7 @@ use graphics::{
 };
 
 use piston::event::{
-	self,
+    self,
     RenderEvent,
     UpdateEvent,
 };
