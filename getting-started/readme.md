@@ -102,6 +102,10 @@ git = "https://github.com/PistonDevelopers/piston.git"
 
 git = "https://github.com/PistonDevelopers/sdl2_window.git"
 
+[dependencies.pistoncore-window]
+
+git = "https://github.com/PistonDevelopers/window.git"
+
 [dependencies.piston2d-graphics]
 
 git = "https://github.com/PistonDevelopers/graphics.git"
@@ -109,6 +113,10 @@ git = "https://github.com/PistonDevelopers/graphics.git"
 [dependencies.piston2d-opengl_graphics]
 
 git = "https://github.com/PistonDevelopers/opengl_graphics.git"
+
+[dependencies.shader_version]
+
+git = "https://github.com/PistonDevelopers/shader_version.git"
 
 ```
 
@@ -157,27 +165,26 @@ extern crate graphics;
 extern crate piston;
 extern crate sdl2_window;
 extern crate opengl_graphics;
+extern crate shader_version;
+extern crate window;
 
 use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::Gl;
-use piston::shader_version::opengl::OpenGL::_3_2;
+use shader_version::opengl::OpenGL::_3_2;
 
 use std::cell::RefCell;
-use piston::{
+use piston::event::{
+    self,
     RenderArgs,
-    UpdateArgs
+    RenderEvent,
+    UpdateArgs,
+    UpdateEvent,
 };
 
 use graphics::{
     Context,
     Rectangle,
     RelativeTransform,
-};
-
-use piston::event::{
-    self,
-    RenderEvent,
-    UpdateEvent,
 };
 
 pub struct App {
@@ -209,7 +216,7 @@ fn main() {
     // Create an SDL window.
     let window = Window::new(
         _3_2,
-        piston::WindowSettings::default()
+        window::WindowSettings::default()
             );
 
     // Create a new game and run it.
@@ -225,7 +232,6 @@ fn main() {
         }
     }
 }
-
 ```
 
 ## Compiling and running.
