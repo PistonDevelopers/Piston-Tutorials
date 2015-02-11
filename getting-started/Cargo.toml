@@ -8,29 +8,16 @@ authors = [
 ]
 
 [[bin]]
-
 name = "game"
 
 [dependencies.piston]
-
 git = "https://github.com/PistonDevelopers/piston.git"
 
-[dependencies.pistoncore-sdl2_window]
-
-git = "https://github.com/PistonDevelopers/sdl2_window.git"
-
-[dependencies.pistoncore-window]
-
-git = "https://github.com/PistonDevelopers/window.git"
-
 [dependencies.piston2d-graphics]
-
 git = "https://github.com/PistonDevelopers/graphics.git"
 
+[dependencies.pistoncore-sdl2_window]
+git = "https://github.com/PistonDevelopers/sdl2_window.git"
+
 [dependencies.piston2d-opengl_graphics]
-
 git = "https://github.com/PistonDevelopers/opengl_graphics.git"
-
-[dependencies.shader_version]
-
-git = "https://github.com/PistonDevelopers/shader_version.git"
