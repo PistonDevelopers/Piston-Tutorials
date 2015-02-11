@@ -14,14 +14,14 @@ to test the build environment.
 I assume that you have installed Rust and Cargo, and have already built a
 hello-world project with Cargo.
 If you haven't met these criteria, please read the first few chapters of
-[The Rust Guide](http://doc.rust-lang.org/guide.html) and come back once
+[The Rust Book](http://doc.rust-lang.org/book/) and come back once
 you've finished.
 
 ![Result](./out.gif)
 
 #### At this stage
 
-* You should be able to run the command `rustc -v`
+* You should be able to run the command `rustc -V`
 * You should be able to run the command `cargo -V`
 
 If you have failed either of these, please review the getting started
@@ -29,7 +29,7 @@ guide and make sure that you have the latest versions of `rustc` and `cargo`.
 
 ## Installing Dependencies
 
-Parts of the Piston project depend on native C libraries.  For example, in
+Parts of the Piston project depend on native C libraries. For example, in
 order to display a window and hook it up to an OpenGL context, we can use
 either GLFW or SDL2 as the implementation of the windowing system.
 
@@ -39,9 +39,9 @@ install the SDL2 native library.
 ### SDL2 on OSX
 
 If you use [Homebrew](http://brew.sh), installing sdl2 is as simple as
-`brew install sdl2`.  That's it.  Done.
+`brew install sdl2`. That's it. Done.
 
-Otherwise, follow the steps under [sdl2 on Linux](#sdl2-on-linux)
+Otherwise, follow the steps under [sdl2 on Linux](#sdl2-on-linux).
 
 Honestly, it's probably easier to just install Homebrew and then follow the
 homebrew instructions.
@@ -51,19 +51,19 @@ If you are on Ubuntu Trusty, you can run
 `sudo apt-get install libsdl2-dev`!
 
 ### SDL2 on Linux
-Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/setting-up-sdl2-in-ubuntu-or-linux-mint.html)
+Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/setting-up-sdl2-in-ubuntu-or-linux-mint.html).
 
 #### At this stage
 `ldconfig -p | grep libSDL2` should print out some paths to the .so libraries.
 
 ### SDL2 on Windows
 Copy SDL2.dll to project directory.
-- For 32-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/SDL2.dll?raw=true) .
-- For 64-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/SDL2.dll?raw=true) .
+- For 32-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/SDL2.dll?raw=true).
+- For 64-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/SDL2.dll?raw=true).
 
-Copy libSDL2.dll.a to  `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
-- For 32-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libSDL2.dll.a?raw=true) .
-- For 64-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libSDL2.dll.a?raw=true) .
+Copy libSDL2.dll.a to `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
+- For 32-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libSDL2.dll.a?raw=true).
+- For 64-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libSDL2.dll.a?raw=true).
 
 ## Setting Up The Project
 
@@ -80,7 +80,7 @@ touch Cargo.toml
 Now in your favorite editor, add project settings and dependencies to
 `Cargo.toml`.
 
-```rust
+```toml
 [package]
 
 name = "getting-started"
@@ -232,20 +232,21 @@ fn main() {
         }
     }
 }
+
 ```
 
-## Compiling and running.
+## Compiling And Running
 
-Awesome!  Now that we have the game code, let's get it running!
+Awesome! Now that we have the game code, let's get it running!
 With Cargo, downloaing dependencies and building the application is as
-simple as running `cargo build` from the main project directory..
+simple as running `cargo build` from the main project directory.
 
 If all goes well, you should have the binary `game` inside the `target`
 directory.
 
 Run it by executing `./target/game`.
 
-You can also directly run it by running `cargo run`
+You can also directly run it by running `cargo run`.
 
 On your screen you should have a rotating square that looks like this:
 
