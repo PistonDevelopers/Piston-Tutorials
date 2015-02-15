@@ -57,13 +57,14 @@ Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/s
 `ldconfig -p | grep libSDL2` should print out some paths to the .so libraries.
 
 ### SDL2 on Windows
-Copy SDL2.dll to project directory.
-- For 32-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/SDL2.dll?raw=true).
-- For 64-bit Windows, download SDL2.dll from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/SDL2.dll?raw=true).
+Copy `SDL2.dll` to the project directory root (where your `Cargo.toml` is, see below).
+You will need to distribute this file alongside your `.exe`.
+- For 32-bit Windows, download [this SDL2.dll](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/SDL2.dll?raw=true).
+- For 64-bit Windows, download [that SDL2.dll](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/SDL2.dll?raw=true).
 
-Copy libSDL2.dll.a to `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
-- For 32-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libSDL2.dll.a?raw=true).
-- For 64-bit Windows, download libSDL2.dll.a from [here](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libSDL2.dll.a?raw=true).
+Copy `libSDL2.dll.a` and `libfreetype-6.a` to `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
+- For 32-bit Windows, download [this libSDL2.dll.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libSDL2.dll.a?raw=true) and [this libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\i686-pc-windows-gnu\lib\`.
+- For 64-bit Windows, download [that libSDL2.dll.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libSDL2.dll.a?raw=true) and [that libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\x86_64-pc-windows-gnu\lib\`.
 
 ## Setting Up The Project
 
