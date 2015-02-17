@@ -48,7 +48,7 @@ homebrew instructions.
 
 ### SDL2 on Ubuntu
 If you are on Ubuntu Trusty, you can run
-`sudo apt-get install libsdl2-dev`!
+`sudo apt-get install libsdl2-dev libfreetype6-dev`!
 
 ### SDL2 on Linux
 Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/setting-up-sdl2-in-ubuntu-or-linux-mint.html).
