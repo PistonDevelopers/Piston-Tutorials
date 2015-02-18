@@ -149,8 +149,6 @@ touch src/main.rs
 Now in your favorite editor edit `src/main.rs`.
 
 ```rust
-#![feature(core)]
-
 extern crate piston;
 extern crate graphics;
 extern crate sdl2_window;
@@ -167,7 +165,7 @@ use piston::event::{
 };
 use graphics::{
     Context,
-    Rectangle,
+    rectangle,
     RelativeTransform
 };
 use sdl2_window::Sdl2Window as Window;
@@ -182,19 +180,21 @@ impl App {
     fn render(&mut self, _: &mut Window, args: &RenderArgs) {
         const GREEN:  [f32; 4] = [0.0, 1.0, 0.0, 1.0];
         const RED:    [f32; 4] = [1.0, 0.0, 0.0, 1.0];
-        const SQUARE: [f64; 4] = [0.0, 0.0, 50.0, 50.0];
 
         // Set up a context to draw into.
         let context = &Context::abs(args.width as f64, args.height as f64);
 
-        // Clear the screen.
-        graphics::clear(GREEN, &mut self.gl);
-
-        // Draw a box rotating around the middle of the screen.
         let center_context = &context.trans((args.width / 2) as f64, (args.height / 2) as f64)
                                      .rot_rad(self.rotation)
                                      .trans(-25.0, -25.0);
-        Rectangle::new(RED).draw(SQUARE, center_context, &mut self.gl);
+        let square = rectangle::square(0.0, 0.0, 50.0);
+
+        self.gl.draw([0, 0, args.width as i32, args.height as i32], |_, gl| {
+            // Clear the screen.
+            graphics::clear(GREEN, gl);
+            // Draw a box rotating around the middle of the screen.
+            graphics::rectangle(RED, square, center_context, gl);
+        });
     }
 
     fn update(&mut self, _: &mut Window, args: &UpdateArgs) {
