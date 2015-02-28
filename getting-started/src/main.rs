@@ -18,10 +18,10 @@ use graphics::{
     RelativeTransform
 };
 use sdl2_window::Sdl2Window as Window;
-use opengl_graphics::{ Gl, OpenGL };
+use opengl_graphics::{ GlGraphics, OpenGL };
 
 pub struct App {
-    gl: Gl,       // OpenGL drawing backend.
+    gl: GlGraphics,       // OpenGL drawing backend.
     rotation: f64 // Rotation for the square.
 }
 
@@ -62,7 +62,7 @@ fn main() {
 
     // Create a new game and run it.
     let mut app = App {
-        gl: Gl::new(OpenGL::_3_2),
+        gl: GlGraphics::new(OpenGL::_3_2),
         rotation: 0.0
     };
 
