@@ -42,7 +42,7 @@ impl App {
             // Clear the screen.
             graphics::clear(GREEN, gl);
             // Draw a box rotating around the middle of the screen.
-            graphics::rectangle(RED, square, center_context, gl);
+            graphics::rectangle(RED, square, center_context.transform, gl);
         });
     }
 
