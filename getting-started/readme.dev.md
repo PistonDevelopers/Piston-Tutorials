@@ -38,7 +38,7 @@ install the SDL2 native library.
 
 ### SDL2 and Freetype on OSX
 
-If you use [Homebrew](http://brew.sh), installing sdl2 is as simple as
+If you use [Homebrew](http://brew.sh), installing sdl2 and freetype is as simple as
 `brew install sdl2 freetype`. That's it. Done.
 
 Otherwise, follow the steps under [sdl2 on Linux](#sdl2-on-linux).
