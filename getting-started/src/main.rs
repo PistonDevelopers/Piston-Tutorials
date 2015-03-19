@@ -21,14 +21,14 @@ use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
 
 pub struct App {
-    gl: GlGraphics,       // OpenGL drawing backend.
-    rotation: f64 // Rotation for the square.
+    gl: GlGraphics, // OpenGL drawing backend.
+    rotation: f64   // Rotation for the square.
 }
 
 impl App {
     fn render(&mut self, _: &mut Window, args: &RenderArgs) {
-        const GREEN:  [f32; 4] = [0.0, 1.0, 0.0, 1.0];
-        const RED:    [f32; 4] = [1.0, 0.0, 0.0, 1.0];
+        const GREEN: [f32; 4] = [0.0, 1.0, 0.0, 1.0];
+        const RED:   [f32; 4] = [1.0, 0.0, 0.0, 1.0];
 
         // Set up a context to draw into.
         let context = &Context::abs(args.width as f64, args.height as f64);
