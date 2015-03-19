@@ -36,17 +36,17 @@ either GLFW or SDL2 as the implementation of the windowing system.
 The rest of this tutorial uses SDL2 for windowing, so we will need to
 install the SDL2 native library.
 
-### SDL2 on OSX
+### SDL2 and Freetype on OSX
 
 If you use [Homebrew](http://brew.sh), installing sdl2 is as simple as
-`brew install sdl2`. That's it. Done.
+`brew install sdl2 freetype`. That's it. Done.
 
 Otherwise, follow the steps under [sdl2 on Linux](#sdl2-on-linux).
 
 Honestly, it's probably easier to just install Homebrew and then follow the
 homebrew instructions.
 
-### SDL2 on Ubuntu
+### SDL2 and Freetype on Ubuntu
 If you are on Ubuntu Trusty, you can run
 `sudo apt-get install libsdl2-dev libfreetype6-dev`!
 
@@ -56,7 +56,7 @@ Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/s
 #### At this stage
 `ldconfig -p | grep libSDL2` should print out some paths to the .so libraries.
 
-### SDL2 on Windows
+### SDL2 and Freetype on Windows
 Copy `SDL2.dll` to the project directory root (where your `Cargo.toml` is, see below).
 You will need to distribute this file alongside your `.exe`.
 - For 32-bit Windows, download [this SDL2.dll](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/SDL2.dll?raw=true).
