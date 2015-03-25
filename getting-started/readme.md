@@ -233,7 +233,7 @@ fn main() {
 ## Compiling And Running
 
 Awesome! Now that we have the game code, let's get it running!
-With Cargo, downloaing dependencies and building the application is as
+With Cargo, downloading dependencies and building the application is as
 simple as running `cargo build` from the main project directory.
 
 If all goes well, you should have the binary `game` inside the `target`
