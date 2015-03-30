@@ -3,6 +3,7 @@ extern crate graphics;
 extern crate sdl2_window;
 extern crate opengl_graphics;
 
+use std::rc::Rc;
 use std::cell::RefCell;
 use piston::window::WindowSettings;
 use piston::event::{
@@ -26,7 +27,7 @@ pub struct App {
 }
 
 impl App {
-    fn render(&mut self, _: &mut Window, args: &RenderArgs) {
+    fn render(&mut self, args: &RenderArgs) {
         const GREEN: [f32; 4] = [0.0, 1.0, 0.0, 1.0];
         const RED:   [f32; 4] = [1.0, 0.0, 0.0, 1.0];
 
@@ -46,7 +47,7 @@ impl App {
         });
     }
 
-    fn update(&mut self, _: &mut Window, args: &UpdateArgs) {
+    fn update(&mut self, args: &UpdateArgs) {
         // Rotate 2 radians per second.
         self.rotation += 2.0 * args.dt;
     }
@@ -58,7 +59,7 @@ fn main() {
         OpenGL::_3_2,
         WindowSettings::default()
     );
-    let window = RefCell::new(window);
+    let window = Rc::new(RefCell::new(window));
 
     // Create a new game and run it.
     let mut app = App {
@@ -66,13 +67,13 @@ fn main() {
         rotation: 0.0
     };
 
-    for e in events(&window) {
+    for e in events(window) {
         if let Some(r) = e.render_args() {
-            app.render(&mut window.borrow_mut(), &r);
+            app.render(&r);
         }
 
         if let Some(u) = e.update_args() {
-            app.update(&mut window.borrow_mut(), &u);
+            app.update(&u);
         }
     }
 }
