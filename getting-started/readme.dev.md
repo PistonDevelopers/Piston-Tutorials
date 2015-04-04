@@ -131,10 +131,10 @@ Awesome! Now that we have the game code, let's get it running!
 With Cargo, downloading dependencies and building the application is as
 simple as running `cargo build` from the main project directory.
 
-If all goes well, you should have the binary `game` inside the `target`
+If all goes well, you should have the binary `spinning-square` inside the `target/debug`
 directory.
 
-Run it by executing `./target/game`.
+Run it by executing `./target/debug/spinning-square`.
 
 You can also directly run it by running `cargo run`.
 

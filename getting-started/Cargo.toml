@@ -1,6 +1,6 @@
 [package]
 
-name = "getting-started"
+name = "getting-started-spinning-square"
 version = "0.0.0"
 authors = [
     "TyOverby <ty@pre-alpha.com>",
@@ -8,7 +8,7 @@ authors = [
 ]
 
 [[bin]]
-name = "game"
+name = "spinning-square"
 
 [dependencies.piston]
 git = "https://github.com/PistonDevelopers/piston.git"
