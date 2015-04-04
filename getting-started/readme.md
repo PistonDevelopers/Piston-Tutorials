@@ -84,7 +84,7 @@ Now in your favorite editor, add project settings and dependencies to
 ```toml
 [package]
 
-name = "getting-started"
+name = "getting-started-spinning-square"
 version = "0.0.0"
 authors = [
     "TyOverby <ty@pre-alpha.com>",
@@ -92,7 +92,7 @@ authors = [
 ]
 
 [[bin]]
-name = "game"
+name = "spinning-square"
 
 [dependencies.piston]
 git = "https://github.com/PistonDevelopers/piston.git"
@@ -105,7 +105,6 @@ git = "https://github.com/PistonDevelopers/sdl2_window.git"
 
 [dependencies.piston2d-opengl_graphics]
 git = "https://github.com/PistonDevelopers/opengl_graphics.git"
-
 ```
 
 You might be thinking that this is a lot of dependencies for such a simple
@@ -156,19 +155,8 @@ extern crate opengl_graphics;
 
 use std::rc::Rc;
 use std::cell::RefCell;
-use piston::window::WindowSettings;
-use piston::event::{
-    events,
-    RenderArgs,
-    RenderEvent,
-    UpdateArgs,
-    UpdateEvent
-};
-use graphics::{
-    Context,
-    rectangle,
-    RelativeTransform
-};
+use piston::window::{ WindowSettings, Size };
+use piston::event::{ RenderArgs, UpdateArgs };
 use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
 
@@ -179,6 +167,8 @@ pub struct App {
 
 impl App {
     fn render(&mut self, args: &RenderArgs) {
+        use graphics::*;
+
         const GREEN: [f32; 4] = [0.0, 1.0, 0.0, 1.0];
         const RED:   [f32; 4] = [1.0, 0.0, 0.0, 1.0];
 
@@ -192,9 +182,9 @@ impl App {
 
         self.gl.draw([0, 0, args.width as i32, args.height as i32], |_, gl| {
             // Clear the screen.
-            graphics::clear(GREEN, gl);
+            clear(GREEN, gl);
             // Draw a box rotating around the middle of the screen.
-            graphics::rectangle(RED, square, center_context.transform, gl);
+            rectangle(RED, square, center_context.transform, gl);
         });
     }
 
@@ -205,20 +195,26 @@ impl App {
 }
 
 fn main() {
+    let opengl = OpenGL::_3_2;
+
     // Create an SDL window.
     let window = Window::new(
-        OpenGL::_3_2,
-        WindowSettings::default()
+        opengl,
+        WindowSettings::new("spinning-square".to_string(),
+                            Size { width: 200, height: 200 })
+                           .exit_on_esc(true)
     );
     let window = Rc::new(RefCell::new(window));
 
     // Create a new game and run it.
     let mut app = App {
-        gl: GlGraphics::new(OpenGL::_3_2),
+        gl: GlGraphics::new(opengl),
         rotation: 0.0
     };
 
-    for e in events(window) {
+    for e in piston::events(window) {
+        use piston::event::*;
+
         if let Some(r) = e.render_args() {
             app.render(&r);
         }
@@ -228,7 +224,6 @@ fn main() {
         }
     }
 }
-
 ```
 
 ## Compiling And Running
@@ -237,10 +232,10 @@ Awesome! Now that we have the game code, let's get it running!
 With Cargo, downloading dependencies and building the application is as
 simple as running `cargo build` from the main project directory.
 
-If all goes well, you should have the binary `game` inside the `target`
+If all goes well, you should have the binary `spinning-square` inside the `target/debug`
 directory.
 
-Run it by executing `./target/game`.
+Run it by executing `./target/debug/spinning-square`.
 
 You can also directly run it by running `cargo run`.
 

@@ -5,19 +5,8 @@ extern crate opengl_graphics;
 
 use std::rc::Rc;
 use std::cell::RefCell;
-use piston::window::WindowSettings;
-use piston::event::{
-    events,
-    RenderArgs,
-    RenderEvent,
-    UpdateArgs,
-    UpdateEvent
-};
-use graphics::{
-    Context,
-    rectangle,
-    RelativeTransform
-};
+use piston::window::{ WindowSettings, Size };
+use piston::event::{ RenderArgs, UpdateArgs };
 use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
 
@@ -28,6 +17,8 @@ pub struct App {
 
 impl App {
     fn render(&mut self, args: &RenderArgs) {
+        use graphics::*;
+
         const GREEN: [f32; 4] = [0.0, 1.0, 0.0, 1.0];
         const RED:   [f32; 4] = [1.0, 0.0, 0.0, 1.0];
 
@@ -41,9 +32,9 @@ impl App {
 
         self.gl.draw([0, 0, args.width as i32, args.height as i32], |_, gl| {
             // Clear the screen.
-            graphics::clear(GREEN, gl);
+            clear(GREEN, gl);
             // Draw a box rotating around the middle of the screen.
-            graphics::rectangle(RED, square, center_context.transform, gl);
+            rectangle(RED, square, center_context.transform, gl);
         });
     }
 
@@ -54,20 +45,26 @@ impl App {
 }
 
 fn main() {
+    let opengl = OpenGL::_3_2;
+
     // Create an SDL window.
     let window = Window::new(
-        OpenGL::_3_2,
-        WindowSettings::default()
+        opengl,
+        WindowSettings::new("spinning-square".to_string(),
+                            Size { width: 200, height: 200 })
+                           .exit_on_esc(true)
     );
     let window = Rc::new(RefCell::new(window));
 
     // Create a new game and run it.
     let mut app = App {
-        gl: GlGraphics::new(OpenGL::_3_2),
+        gl: GlGraphics::new(opengl),
         rotation: 0.0
     };
 
-    for e in events(window) {
+    for e in piston::events(window) {
+        use piston::event::*;
+
         if let Some(r) = e.render_args() {
             app.render(&r);
         }
