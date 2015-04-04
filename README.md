@@ -6,13 +6,13 @@ tutorial.
 
 ## Current Tutorials
 
-#### [Getting Started With Piston](./getting-started)
+#### [Getting Started Spinning Square](./getting-started)
 A "tutorial" with instructions on compiling and running a very
 simple Piston.
 
 ## Planned Tutorials
 
-* rust-graphics
+* graphics
 * piston
 
 ## Making changes to the tutorials
