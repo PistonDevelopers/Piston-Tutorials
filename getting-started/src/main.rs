@@ -3,10 +3,8 @@ extern crate graphics;
 extern crate sdl2_window;
 extern crate opengl_graphics;
 
-use std::rc::Rc;
-use std::cell::RefCell;
 use piston::window::{ WindowSettings, Size };
-use piston::event::{ RenderArgs, UpdateArgs };
+use piston::event::*;
 use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
 
@@ -54,7 +52,6 @@ fn main() {
                             Size { width: 200, height: 200 })
                            .exit_on_esc(true)
     );
-    let window = Rc::new(RefCell::new(window));
 
     // Create a new game and run it.
     let mut app = App {
@@ -62,9 +59,7 @@ fn main() {
         rotation: 0.0
     };
 
-    for e in piston::events(window) {
-        use piston::event::*;
-
+    for e in window.events() {
         if let Some(r) = e.render_args() {
             app.render(&r);
         }
