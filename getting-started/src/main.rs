@@ -3,7 +3,7 @@ extern crate graphics;
 extern crate sdl2_window;
 extern crate opengl_graphics;
 
-use piston::window::{ WindowSettings, Size };
+use piston::window::WindowSettings;
 use piston::event::*;
 use sdl2_window::Sdl2Window as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
@@ -49,9 +49,11 @@ fn main() {
     // Create an SDL window.
     let window = Window::new(
         opengl,
-        WindowSettings::new("spinning-square".to_string(),
-                            Size { width: 200, height: 200 })
-                           .exit_on_esc(true)
+        WindowSettings::new(
+            "spinning-square",
+            [200, 200]
+        )
+        .exit_on_esc(true)
     );
 
     // Create a new game and run it.
