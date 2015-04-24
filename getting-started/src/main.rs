@@ -1,11 +1,11 @@
 extern crate piston;
 extern crate graphics;
-extern crate sdl2_window;
+extern crate glutin_window;
 extern crate opengl_graphics;
 
 use piston::window::WindowSettings;
 use piston::event::*;
-use sdl2_window::Sdl2Window as Window;
+use glutin_window::GlutinWindow as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
 
 pub struct App {

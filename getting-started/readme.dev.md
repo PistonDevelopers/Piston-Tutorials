@@ -31,40 +31,27 @@ guide and make sure that you have the latest versions of `rustc` and `cargo`.
 
 Parts of the Piston project depend on native C libraries. For example, in
 order to display a window and hook it up to an OpenGL context, we can use
-either GLFW or SDL2 as the implementation of the windowing system.
+either Glutin, GLFW or SDL2 as the implementation of the windowing system.
 
 The rest of this tutorial uses SDL2 for windowing, so we will need to
 install the SDL2 native library.
 
-### SDL2 and Freetype on OSX
+### Freetype on OS X
 
-If you use [Homebrew](http://brew.sh), installing sdl2 and freetype is as simple as
-`brew install sdl2 freetype`. That's it. Done.
-
-Otherwise, follow the steps under [sdl2 on Linux](#sdl2-on-linux).
+If you use [Homebrew](http://brew.sh), installing freetype is as simple as
+`brew install freetype`. That's it. Done.
 
 Honestly, it's probably easier to just install Homebrew and then follow the
 homebrew instructions.
 
-### SDL2 and Freetype on Ubuntu
-If you are on Ubuntu Trusty, you can run
-`sudo apt-get install libsdl2-dev libfreetype6-dev`!
+### Freetype on Ubuntu
+If you are on Ubuntu, you can run
+`sudo apt-get install libfreetype6-dev`!
 
-### SDL2 on Linux
-Follow the instructions found [here](http://nothingtocode.blogspot.com/2013/07/setting-up-sdl2-in-ubuntu-or-linux-mint.html).
-
-#### At this stage
-`ldconfig -p | grep libSDL2` should print out some paths to the .so libraries.
-
-### SDL2 and Freetype on Windows
-Copy `SDL2.dll` to the project directory root (where your `Cargo.toml` is, see below).
-You will need to distribute this file alongside your `.exe`.
-- For 32-bit Windows, download [this SDL2.dll](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/SDL2.dll?raw=true).
-- For 64-bit Windows, download [that SDL2.dll](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/SDL2.dll?raw=true).
-
-Copy `libSDL2.dll.a` and `libfreetype-6.a` to `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
-- For 32-bit Windows, download [this libSDL2.dll.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libSDL2.dll.a?raw=true) and [this libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\i686-pc-windows-gnu\lib\`.
-- For 64-bit Windows, download [that libSDL2.dll.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libSDL2.dll.a?raw=true) and [that libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\x86_64-pc-windows-gnu\lib\`.
+### Freetype on Windows
+Copy `libfreetype-6.a` to `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
+- For 32-bit Windows, download [this libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\i686-pc-windows-gnu\lib\`.
+- For 64-bit Windows, download [that libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\x86_64-pc-windows-gnu\lib\`.
 
 ## Setting Up The Project
 
@@ -90,11 +77,11 @@ The `piston` and `graphics` libraries are able to do a lot of work by
 themselves, but they are made to be completely independent of a
 backing implementation.
 For example, when it comes to displaying a window and getting keyboard events
-in a cross-platform manner, you can use either GLFW or SDL2.
+in a cross-platform manner, you can use either Glutin, GLFW or SDL2.
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
-with an OpenGL context.
-In this tutorial I chose SDL2, so you will notice that in the cargo file, we
-imported `sdl2_window`.
+with an OpenGL context. Glutin - pure Rust alternative.
+In this tutorial I chose Glutin, so you will notice that in the cargo file, we
+imported `glutin_window`.
 `opengl_graphics` is another backend that implements the interface defined in
 `graphics`.
 `graphics` is a 2d graphics API that doesn't care about how things are
