@@ -7,7 +7,7 @@ os:
 before_install:
     - sudo apt-get update -qq
 install:
-    - sudo apt-get install libfreetype6-dev
+    - sudo apt-get install libfreetype6-dev libXxf86vm-dev
 script:
     - cd ./getting-started
     - cargo build -v
