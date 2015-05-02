@@ -46,7 +46,7 @@ impl App {
 fn main() {
     let opengl = OpenGL::_3_2;
 
-    // Create an SDL window.
+    // Create an Glutin window.
     let window = Window::new(
         opengl,
         WindowSettings::new(
