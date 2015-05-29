@@ -72,7 +72,7 @@ Now in your favorite editor, add project settings and dependencies to
 [package]
 
 name = "getting-started-spinning-square"
-version = "0.0.0"
+version = "0.1.0"
 authors = [
     "TyOverby <ty@pre-alpha.com>",
     "Nikita Pekin <contact@nikitapek.in>"
@@ -81,17 +81,11 @@ authors = [
 [[bin]]
 name = "spinning-square"
 
-[dependencies.piston]
-git = "https://github.com/PistonDevelopers/piston.git"
-
-[dependencies.piston2d-graphics]
-git = "https://github.com/PistonDevelopers/graphics.git"
-
-[dependencies.pistoncore-glutin_window]
-git = "https://github.com/PistonDevelopers/glutin_window.git"
-
-[dependencies.piston2d-opengl_graphics]
-git = "https://github.com/PistonDevelopers/opengl_graphics.git"
+[dependencies]
+piston = "0.1.4"
+piston2d-graphics = "0.1.4"
+pistoncore-glutin_window = "0.1.0"
+piston2d-opengl_graphics = "0.1.0"
 ```
 
 You might be thinking that this is a lot of dependencies for such a simple
