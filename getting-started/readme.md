@@ -82,10 +82,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.1.4"
-piston2d-graphics = "0.1.4"
-pistoncore-glutin_window = "0.1.0"
-piston2d-opengl_graphics = "0.1.0"
+piston = "0.4.1"
+piston2d-graphics = "0.5.0"
+pistoncore-glutin_window = "0.4.1"
+piston2d-opengl_graphics = "0.6.0"
 ```
 
 You might be thinking that this is a lot of dependencies for such a simple
@@ -175,15 +175,15 @@ impl App {
 }
 
 fn main() {
-    let opengl = OpenGL::_3_2;
+    let opengl = OpenGL::V3_2;
 
     // Create an Glutin window.
     let window = Window::new(
-        opengl,
         WindowSettings::new(
             "spinning-square",
             [200, 200]
         )
+        .opengl(opengl)
         .exit_on_esc(true)
     );
 
