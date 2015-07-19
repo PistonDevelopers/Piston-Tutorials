@@ -44,18 +44,21 @@ impl App {
 }
 
 fn main() {
+    let opengl = OpenGL::V3_2;
+
     // Create an Glutin window.
     let window = Window::new(
         WindowSettings::new(
             "spinning-square",
             [200, 200]
         )
+        .opengl(opengl)
         .exit_on_esc(true)
     );
 
     // Create a new game and run it.
     let mut app = App {
-        gl: GlGraphics::new(OpenGL::_3_2),
+        gl: GlGraphics::new(opengl),
         rotation: 0.0
     };
 
