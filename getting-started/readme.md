@@ -84,8 +84,9 @@ name = "spinning-square"
 [dependencies]
 piston = "0.4.1"
 piston2d-graphics = "0.4.1"
-pistoncore-glutin_window = "0.5.0"
+pistoncore-glutin_window = "0.6.0"
 piston2d-opengl_graphics = "0.6.0"
+
 ```
 
 You might be thinking that this is a lot of dependencies for such a simple
@@ -153,7 +154,8 @@ impl App {
 
         let square = rectangle::square(0.0, 0.0, 50.0);
         let rotation = self.rotation;
-        let (x, y) = ((args.width / 2) as f64, (args.height / 2) as f64);
+        let (x, y) = ((args.draw_width / 2) as f64,
+                      (args.draw_height / 2) as f64);
 
         self.gl.draw(args.viewport(), |c, gl| {
             // Clear the screen.
@@ -203,6 +205,7 @@ fn main() {
         }
     }
 }
+
 ```
 
 ## Compiling And Running

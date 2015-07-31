@@ -33,8 +33,8 @@ Parts of the Piston project depend on native C libraries. For example, in
 order to display a window and hook it up to an OpenGL context, we can use
 either Glutin, GLFW or SDL2 as the implementation of the windowing system.
 
-The rest of this tutorial uses SDL2 for windowing, so we will need to
-install the SDL2 native library.
+The rest of this tutorial uses Glutin for windowing, so we won't need to
+directly install any additional libraries for that purpose.
 
 ### Freetype on OS X
 

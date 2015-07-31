@@ -8,7 +8,9 @@ authors = [
 ]
 
 [dependencies.md_rel]
-git = "https://github.com/TyOverby/md_rel.git"
+#git = "https://github.com/TyOverby/md_rel.git"
+#Use the one above when https://github.com/TyOverby/md_rel/pull/7 is merged.
+git = "https://github.com/bvssvni/md_rel.git"
 
 [[bin]]
 name = "markdown_compiler"
