@@ -177,6 +177,7 @@ impl App {
 }
 
 fn main() {
+    // Change this to OpenGL::V2_1 if not working.
     let opengl = OpenGL::V3_2;
 
     // Create an Glutin window.
