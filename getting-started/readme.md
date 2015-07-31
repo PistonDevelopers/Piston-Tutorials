@@ -49,9 +49,7 @@ If you are on Ubuntu, you can run
 `sudo apt-get install libfreetype6-dev`!
 
 ### Freetype on Windows
-Copy `libfreetype-6.a` to `$RUST_ROOT\bin\rustlib\$CPU_ARCH-pc-windows-gnu\lib`.
-- For 32-bit Windows, download [this libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/i686/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\i686-pc-windows-gnu\lib\`.
-- For 64-bit Windows, download [that libfreetype-6.a](https://github.com/tedsta/getting-started-with-piston/blob/master/windows_clibs/x86_64/libfreetype-6.a?raw=true) to e.g. `C:\Rust\bin\rustlib\x86_64-pc-windows-gnu\lib\`.
+See https://github.com/PistonDevelopers/freetype-sys#for-windows-users
 
 ## Setting Up The Project
 
