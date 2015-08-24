@@ -4,7 +4,8 @@ extern crate glutin_window;
 extern crate opengl_graphics;
 
 use piston::window::WindowSettings;
-use piston::event::*;
+use piston::event_loop::*;
+use piston::input::*;
 use glutin_window::GlutinWindow as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
 
@@ -49,14 +50,14 @@ fn main() {
     let opengl = OpenGL::V3_2;
 
     // Create an Glutin window.
-    let window = Window::new(
-        WindowSettings::new(
+    let window: Window = WindowSettings::new(
             "spinning-square",
             [200, 200]
         )
         .opengl(opengl)
         .exit_on_esc(true)
-    );
+        .build()
+        .unwrap();
 
     // Create a new game and run it.
     let mut app = App {
