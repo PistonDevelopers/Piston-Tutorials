@@ -80,10 +80,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.4.1"
-piston2d-graphics = "0.4.1"
-pistoncore-glutin_window = "0.6.0"
-piston2d-opengl_graphics = "0.6.0"
+piston = "0.10.0"
+piston2d-graphics = "0.8.0"
+pistoncore-glutin_window = "0.12.0"
+piston2d-opengl_graphics = "0.10.0"
 
 ```
 
@@ -134,7 +134,8 @@ extern crate glutin_window;
 extern crate opengl_graphics;
 
 use piston::window::WindowSettings;
-use piston::event::*;
+use piston::event_loop::*;
+use piston::input::*;
 use glutin_window::GlutinWindow as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
 
@@ -179,14 +180,14 @@ fn main() {
     let opengl = OpenGL::V3_2;
 
     // Create an Glutin window.
-    let window = Window::new(
-        WindowSettings::new(
+    let window: Window = WindowSettings::new(
             "spinning-square",
             [200, 200]
         )
         .opengl(opengl)
         .exit_on_esc(true)
-    );
+        .build()
+        .unwrap();
 
     // Create a new game and run it.
     let mut app = App {
