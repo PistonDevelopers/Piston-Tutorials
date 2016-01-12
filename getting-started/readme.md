@@ -80,10 +80,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.16.0"
+piston = "0.17.0"
 piston2d-graphics = "0.13.0"
 pistoncore-glutin_window = "0.20.0"
-piston2d-opengl_graphics = "0.22.0"
+piston2d-opengl_graphics = "0.23.0"
 
 ```
 
@@ -180,7 +180,7 @@ fn main() {
     let opengl = OpenGL::V3_2;
 
     // Create an Glutin window.
-    let window: Window = WindowSettings::new(
+    let mut window: Window = WindowSettings::new(
             "spinning-square",
             [200, 200]
         )
@@ -195,7 +195,8 @@ fn main() {
         rotation: 0.0
     };
 
-    for e in window.events() {
+    let mut events = window.events();
+    while let Some(e) = events.next(&mut window) {
         if let Some(r) = e.render_args() {
             app.render(&r);
         }
