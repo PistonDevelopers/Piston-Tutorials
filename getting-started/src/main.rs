@@ -50,7 +50,7 @@ fn main() {
     let opengl = OpenGL::V3_2;
 
     // Create an Glutin window.
-    let window: Window = WindowSettings::new(
+    let mut window: Window = WindowSettings::new(
             "spinning-square",
             [200, 200]
         )
@@ -65,7 +65,8 @@ fn main() {
         rotation: 0.0
     };
 
-    for e in window.events() {
+    let mut events = window.events();
+    while let Some(e) = events.next(&mut window) {
         if let Some(r) = e.render_args() {
             app.render(&r);
         }
