@@ -3,6 +3,8 @@
 
 [![Build Status](https://travis-ci.org/PistonDevelopers/Piston-Tutorials.svg?branch=master)](https://travis-ci.org/PistonDevelopers/Piston-Tutorials)
 
+**Notice! Use [Rust Beta (1.8)](https://www.rust-lang.org/downloads.html) or newer, see [#1050](https://github.com/PistonDevelopers/piston/issues/1050)**.
+
 In this tutorial, I hope to get you from an empty Cargo project to having a
 window with a rotating square in it.
 This tutorial does ___not___ explain concepts used in the game, as those
@@ -80,10 +82,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.17.0"
-piston2d-graphics = "0.13.0"
-pistoncore-glutin_window = "0.20.0"
-piston2d-opengl_graphics = "0.23.0"
+piston = "0.19.0"
+piston2d-graphics = "0.16.0"
+pistoncore-glutin_window = "0.22.0"
+piston2d-opengl_graphics = "0.25.0"
 
 ```
 
