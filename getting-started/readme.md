@@ -50,6 +50,10 @@ homebrew instructions.
 If you are on Ubuntu, you can run
 `sudo apt-get install libfreetype6-dev`!
 
+### Freetype on Fedora
+If you are on Fedora, you can run
+`sudo dnf install freetype-devel`!
+
 ### Freetype on Windows
 See https://github.com/PistonDevelopers/freetype-sys#for-windows-users
 
