@@ -64,9 +64,8 @@ and specify dependencies.
 
 
 ```bash
-mkdir getting-started
+cargo new --bin getting-started
 cd getting-started
-touch Cargo.toml
 ```
 
 Now in your favorite editor, add project settings and dependencies to
@@ -75,15 +74,12 @@ Now in your favorite editor, add project settings and dependencies to
 ```toml
 [package]
 
-name = "getting-started-spinning-square"
+name = "spinning-square"
 version = "0.1.0"
 authors = [
     "TyOverby <ty@pre-alpha.com>",
     "Nikita Pekin <contact@nikitapek.in>"
 ]
-
-[[bin]]
-name = "spinning-square"
 
 [dependencies]
 piston = "0.24.0"
@@ -121,17 +117,7 @@ combined.
 
 ## Writing Some Code
 
-Ok, time for some game logic.
-
-First create the source directory and a file use as the entry point for
-our application.
-
-```bash
-mkdir src
-touch src/main.rs
-```
-
-Now in your favorite editor edit `src/main.rs`.
+Ok, time for some game logic. Edit `src/main.rs` in your favorite editor:
 
 ```rust
 extern crate piston;
@@ -224,9 +210,7 @@ simple as running `cargo build` from the main project directory.
 If all goes well, you should have the binary `spinning-square` inside the `target/debug`
 directory.
 
-Run it by executing `./target/debug/spinning-square`.
-
-You can also directly run it by running `cargo run`.
+Run it by executing `cargo run`.
 
 On your screen you should have a rotating square that looks like this:
 
