@@ -1,13 +1,17 @@
 language: rust
 notifications:
-    irc: "irc.mozilla.org#piston-internals"
+  irc: "irc.mozilla.org#piston-internals"
 os:
-    - linux
-    - osx
-before_install:
-    - sudo apt-get update -qq
-install:
-    - sudo apt-get install libfreetype6-dev libXxf86vm-dev
+  - linux
+  - osx
+addons:
+  apt:
+    packages:
+      - libfreetype6-dev
+      - libXxf86vm-dev
+before_install: # For OS X until addons support `brew`
+ - "if [ ${TRAVIS_OS_NAME} = 'osx' ]; then brew update; fi"
+ - "if [ ${TRAVIS_OS_NAME} = 'osx' ]; then brew install freetype ; fi"
 script:
-    - cd ./getting-started
-    - cargo build -v
+  - cd ./getting-started
+  - cargo build -v
