@@ -54,6 +54,9 @@ If you are on Ubuntu, you can run
 If you are on Fedora, you can run
 `sudo dnf install freetype-devel`!
 
+### Freetype on ArchLinux
+Install `extra/freetype2` package
+
 ### Freetype on Windows
 See https://github.com/PistonDevelopers/freetype-sys#for-windows-users
 
