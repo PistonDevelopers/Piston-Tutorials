@@ -50,6 +50,13 @@ homebrew instructions.
 If you are on Ubuntu, you can run
 `sudo apt-get install libfreetype6-dev`!
 
+### Freetype on Fedora
+If you are on Fedora, you can run
+`sudo dnf install freetype-devel`!
+
+### Freetype on ArchLinux
+Install `extra/freetype2` package
+
 ### Freetype on Windows
 See https://github.com/PistonDevelopers/freetype-sys#for-windows-users
 
@@ -60,9 +67,8 @@ and specify dependencies.
 
 
 ```bash
-mkdir getting-started
+cargo new --bin getting-started
 cd getting-started
-touch Cargo.toml
 ```
 
 Now in your favorite editor, add project settings and dependencies to
@@ -98,17 +104,7 @@ combined.
 
 ## Writing Some Code
 
-Ok, time for some game logic.
-
-First create the source directory and a file use as the entry point for
-our application.
-
-```bash
-mkdir src
-touch src/main.rs
-```
-
-Now in your favorite editor edit `src/main.rs`.
+Ok, time for some game logic. Edit `src/main.rs` in your favorite editor:
 
 ^code(./src/main.rs)
 
@@ -121,9 +117,7 @@ simple as running `cargo build` from the main project directory.
 If all goes well, you should have the binary `spinning-square` inside the `target/debug`
 directory.
 
-Run it by executing `./target/debug/spinning-square`.
-
-You can also directly run it by running `cargo run`.
+Run it by executing `cargo run`.
 
 On your screen you should have a rotating square that looks like this:
 
