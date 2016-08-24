@@ -84,11 +84,14 @@ authors = [
     "Nikita Pekin <contact@nikitapek.in>"
 ]
 
+[[bin]]
+name = "spinning-square"
+
 [dependencies]
-piston = "0.24.0"
-piston2d-graphics = "0.16.0"
-pistoncore-glutin_window = "0.28.0"
-piston2d-opengl_graphics = "0.31.0"
+piston = "0.25.0"
+piston2d-graphics = "0.17.0"
+pistoncore-glutin_window = "0.29.0"
+piston2d-opengl_graphics = "0.32.0"
 
 ```
 
