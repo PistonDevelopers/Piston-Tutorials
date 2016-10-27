@@ -38,28 +38,6 @@ either Glutin, GLFW or SDL2 as the implementation of the windowing system.
 The rest of this tutorial uses Glutin for windowing, so we won't need to
 directly install any additional libraries for that purpose.
 
-### Freetype on OS X
-
-If you use [Homebrew](http://brew.sh), installing freetype is as simple as
-`brew install freetype`. That's it. Done.
-
-Honestly, it's probably easier to just install Homebrew and then follow the
-homebrew instructions.
-
-### Freetype on Ubuntu
-If you are on Ubuntu, you can run
-`sudo apt-get install libfreetype6-dev`!
-
-### Freetype on Fedora
-If you are on Fedora, you can run
-`sudo dnf install freetype-devel`!
-
-### Freetype on ArchLinux
-Install `extra/freetype2` package
-
-### Freetype on Windows
-See https://github.com/PistonDevelopers/freetype-sys#for-windows-users
-
 ## Setting Up The Project
 
 If everything is set up correctly, it's time to create a Cargo project
