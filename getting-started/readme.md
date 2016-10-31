@@ -199,3 +199,7 @@ Run it by executing `cargo run`.
 On your screen you should have a rotating square that looks like this:
 
 ![Result](./out.gif)
+
+## What's Next?
+
+Take a look at the [piston-examples](https://github.com/pistondevelopers/piston-examples) repository.
