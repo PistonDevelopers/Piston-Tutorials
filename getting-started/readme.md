@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/PistonDevelopers/Piston-Tutorials.svg?branch=master)](https://travis-ci.org/PistonDevelopers/Piston-Tutorials)
 
-**Notice! Use [Rust Beta (1.8)](https://www.rust-lang.org/downloads.html) or newer, see [#1050](https://github.com/PistonDevelopers/piston/issues/1050)**.
+**Notice! Use [Rust (1.8)](https://www.rust-lang.org/downloads.html) or newer, see [#1050](https://github.com/PistonDevelopers/piston/issues/1050)**.
 
 In this tutorial, I hope to get you from an empty Cargo project to having a
 window with a rotating square in it.
