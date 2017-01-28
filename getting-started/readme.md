@@ -3,8 +3,6 @@
 
 [![Build Status](https://travis-ci.org/PistonDevelopers/Piston-Tutorials.svg?branch=master)](https://travis-ci.org/PistonDevelopers/Piston-Tutorials)
 
-**Notice! Use [Rust (1.8)](https://www.rust-lang.org/downloads.html) or newer, see [#1050](https://github.com/PistonDevelopers/piston/issues/1050)**.
-
 In this tutorial, I hope to get you from an empty Cargo project to having a
 window with a rotating square in it.
 This tutorial does ___not___ explain concepts used in the game, as those
@@ -66,10 +64,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.28.0"
+piston = "0.31.1"
 piston2d-graphics = "0.20.0"
-pistoncore-glutin_window = "0.34.0"
-piston2d-opengl_graphics = "0.38.0"
+pistoncore-glutin_window = "0.35.0"
+piston2d-opengl_graphics = "0.39.0"
 
 ```
 
@@ -171,7 +169,7 @@ fn main() {
         rotation: 0.0
     };
 
-    let mut events = window.events();
+    let mut events = Events::new(EventSettings::new());
     while let Some(e) = events.next(&mut window) {
         if let Some(r) = e.render_args() {
             app.render(&r);
