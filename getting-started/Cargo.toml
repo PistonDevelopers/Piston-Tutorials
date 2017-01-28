@@ -11,7 +11,7 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.28.0"
+piston = "0.31.1"
 piston2d-graphics = "0.20.0"
-pistoncore-glutin_window = "0.34.0"
-piston2d-opengl_graphics = "0.38.0"
+pistoncore-glutin_window = "0.35.0"
+piston2d-opengl_graphics = "0.39.0"

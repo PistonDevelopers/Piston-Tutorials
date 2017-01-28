@@ -65,7 +65,7 @@ fn main() {
         rotation: 0.0
     };
 
-    let mut events = window.events();
+    let mut events = Events::new(EventSettings::new());
     while let Some(e) = events.next(&mut window) {
         if let Some(r) = e.render_args() {
             app.render(&r);
