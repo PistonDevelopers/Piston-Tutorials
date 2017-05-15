@@ -4,11 +4,6 @@ notifications:
 os:
   - linux
   - osx
-addons:
-  apt:
-    packages:
-      - libfreetype6-dev
-      - libXxf86vm-dev
 before_install: # For OS X until addons support `brew`
  - "if [ ${TRAVIS_OS_NAME} = 'osx' ]; then brew update; fi"
  - "if [ ${TRAVIS_OS_NAME} = 'osx' ]; then brew install freetype ; fi"
