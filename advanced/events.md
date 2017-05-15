@@ -57,6 +57,9 @@ while let Some(e) = events.next(&mut window) {
 }
 ```
 
+The reason to use event traits instead of matching on the `Input` structure,
+is that in generic code an event can be anything that implements the `GenericEvent` trait.
+
 Some libraries handles events for you, for example from the [piston_window](https://crates.io/crates/piston_window) crate:
 
 ```rust
