@@ -120,7 +120,7 @@ cargo doc --open
 
 This will open up the project's documentation in the default browser.
 
-![docs](./images/docs)
+![docs](./images/docs.png)
 
 On the left side all the crates are listed that are included in the dependency graph of your project.
 At the top you can search for "WindowSettings" to find it in the docs.

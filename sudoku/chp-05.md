@@ -84,3 +84,9 @@ The draw state stores things like scissor rectangle, stencil usage and
 blending settings.
 
 The matrix transform is use to translate, rotate, scale etc. the shape.
+
+When you type `cargo run` in the Terminal window, you should see:
+
+![grid](./images/grid.png)
+
+Next, we want to be able to select a cell.
