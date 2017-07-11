@@ -5,7 +5,7 @@ In this tutorial, you will learn how to create a Sudoku game with Piston.
 This tutorial is a bit long, because it goes step by step through the thinking process when developing a game.
 Expect to spend a day or two getting through this!
 
-I assume you have learned gotten through [getting-started](../getting-started) the tutorial and know how to set up a new project.
+I assume you have gotten through the [getting-started](../getting-started) tutorial and know how to set up a new Rust project.
 Some of these steps will be repeated briefly in the first chapter.
 
 ## Chapter 1
@@ -44,7 +44,7 @@ hi
 If this is not working, you might have forgotten the `--bin` flag after `cargo new`. Delete the folder and try again.
 
 Now, we need to add a few libraries to the Cargo.toml.
-To make this more efficient, we will install the tool `cargo-add` such that we can type `cargo add <project>`.
+To make this more efficient, we will install the tool `cargo-add` such that we can type `cargo add <package>`.
 To install `cargo-add`, type the following:
 
 ```
@@ -107,7 +107,7 @@ It reads out the settings by calling the methods.
 For example, `settings.get_exit_on_esc()` like we just did.
 
 Not every window backend in Piston is guaranteed to respect the settings
-you choose. It must call the specific settings explicitly.
+you choose.
 For example, if the window runs on a platform where all applications
 run fullscreen, it will ignore whether you set `.fullscreen(true)` or
 `.fullscreen(false)`.
@@ -122,10 +122,10 @@ This will open up the project's documentation in the default browser.
 
 ![docs](./images/docs.png)
 
-On the left side all the crates are listed that are included in the dependency graph of your project.
+On the left side are all the crates in the dependency graph of your project.
 At the top you can search for "WindowSettings" to find it in the docs.
 
-Here are some things you can set as window settings:
+Here is a list of useful window settings:
 
 - fullscreen
 - exit_on_esc
@@ -136,7 +136,5 @@ Here are some things you can set as window settings:
 - resizable
 - decorated
 - controllers
-
-Get familiar with these, because sooner or later you need them.
 
 [Goto Chapter 2](chp-02.md)
