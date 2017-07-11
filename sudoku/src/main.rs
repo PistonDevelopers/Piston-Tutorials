@@ -38,7 +38,9 @@ fn main() {
     let gameboard_view = GameboardView::new(gameboard_view_settings);
 
     while let Some(e) = events.next(&mut window) {
-        gameboard_controller.event(&e);
+        gameboard_controller.event(gameboard_view.settings.position,
+                                   gameboard_view.settings.size,
+                                   &e);
         if let Some(args) = e.render_args() {
             gl.draw(args.viewport(), |c, g| {
                 use graphics::{clear};

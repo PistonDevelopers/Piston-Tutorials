@@ -27,6 +27,8 @@ pub struct GameboardViewSettings {
     pub section_edge_radius: f64,
     /// Edge radius between cells.
     pub cell_edge_radius: f64,
+    /// Selected cell background color.
+    pub selected_cell_background_color: Color,
 }
 
 impl GameboardViewSettings {
@@ -43,6 +45,7 @@ impl GameboardViewSettings {
             board_edge_radius: 3.0,
             section_edge_radius: 2.0,
             cell_edge_radius: 1.0,
+            selected_cell_background_color: [0.9, 0.9, 1.0, 1.0],
         }
     }
 }
@@ -74,6 +77,18 @@ impl GameboardView {
         // Draw board background.
         Rectangle::new(settings.background_color)
             .draw(board_rect, &c.draw_state, c.transform, g);
+
+        // Draw selected cell background.
+        if let Some(ind) = controller.selected_cell {
+            let cell_size = settings.size / 9.0;
+            let pos = [ind[0] as f64 * cell_size, ind[1] as f64 * cell_size];
+            let cell_rect = [
+                settings.position[0] + pos[0], settings.position[1] + pos[1],
+                cell_size, cell_size
+            ];
+            Rectangle::new(settings.selected_cell_background_color)
+                .draw(cell_rect, &c.draw_state, c.transform, g);
+        }
 
         // Draw cell borders.
         let cell_edge = Line::new(settings.cell_edge_color, settings.cell_edge_radius);
