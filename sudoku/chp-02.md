@@ -3,24 +3,23 @@ by Sven Nilsen, 2017
 
 ## Chapter 2
 
-Piston separates the core from the window backend.
+The Piston core is separate from any underlying window API.
 The reason for this is that developers need to ship to many different platforms,
 and it is very rare that a single window API is supported across all these devices.
 
-Sometimes there are tiny differences between window APIs that makes a
-difference in user experience, e.g. how mouse coordinates are handled outside
-the window border. This means developers pick the API that work best for
+Sometimes there are tiny differences between window APIs that matter for user experience,
+e.g. how mouse coordinates are handled outside
+the window border. This means developers pick the API that works best for
 the specific kind of application they are developing.
 
-You can also write your own window backend.
-For example, to make it easier to set up a project just the way you like it.
+You can also write your own window backend to quickly set up a project just the way you like it.
 In Rust you can create a new library and reexport the stuff you need.
 Such window backends are called "window wrappers".
 
 One window wrapper that is often used for prototyping is the "piston_window" library.
-In this tutorial we will not use it, because I want to explain how
-the core of Piston works in order, so you can decide which window backend
-is right for you.
+In this tutorial we will not use piston_window since I want to explain
+how the core of Piston works relative to window backends and graphics APIs.
+After learning how this works, you can decide which window backend is right for your project.
 
 In the Terminal window, type:
 
@@ -56,7 +55,6 @@ In the `main()` function, create a window:
 ```
 
 When we generated docs for the first time, we only added the "piston" crate.
-This means the docs are not updated.
 To update the docs, type `cargo doc` in the Terminal window.
 Click refresh in the browser to see the changes.
 
@@ -70,7 +68,7 @@ This means the function takes a generic parameter `W` with a trait constraint
 `BuildFromWindowSettings`. All types that implement this trait are accepted.
 
 Rust has a smart type system that understands how to infer the `W` generic
-arguments to the build method.
+argument to the build method.
 Since you are specifying the type of the left side, the type system infers
 that `W` must be equal to `GlutinWindow`:
 
@@ -78,7 +76,7 @@ that `W` must be equal to `GlutinWindow`:
 let window: GlutinWindow = ...
 ```
 
-You can picture how types propagate through your code and "fills the holes".
+You can picture how types propagate through your code and "fill the holes".
 This is how you pick the window backend to use with Piston.
 
 By using generics and traits and taking advantage of the smart type system,
@@ -93,7 +91,7 @@ The Piston core tries to put as little abstraction as possible
 between you and the underlying platform, while at the same time offering portability.
 Most of the code, perhaps 90%, can be written using generics and traits.
 The motivation for this design is to reuse code across projects.
-If Alice works on a library that Bob finds useful,
+If Alice works on a library that Bob finds useful except for a small feature,
 then Bob might send a PR to Alice and they both save work.
 
 Notice that it is only the types and traits that matters,
@@ -101,9 +99,12 @@ not where these types or traits are located.
 You can find them by all searching the docs.
 
 Some people are worried about these extra window backend libraries,
-but the smart thing to focus on is the larger ecosystem.
-A way to measure code reusability is: How large potion of a code base
-have as few dependencies as possible?
+but the smart thing is to focus on the larger ecosystem.
+A way to measure code reusability:
+How many libraries in a code base have as few dependencies as possible?
+The more libraries with few dependencies,
+the less likely are they to be affected by breaking changes.
+This means that generic libraries should have few dependencies.
 
 The Piston project organizes these types and traits in way to reuse
 code across projects with the minimum number of dependencies per library.
@@ -115,7 +116,7 @@ or development time, or makes your codebase more fragile.
 Actually, this pattern makes a large codebase less fragile, since most of
 the code, the generic libraries, breaks less often.
 
-Piston is being developed and this leads to more frequent breaking changes
+Piston is under development and this leads to more frequent breaking changes
 than what is ideal. Over time the number of breaking changes goes down,
 so the expected payoff to organize code this way is a long term motivation.
 
@@ -125,7 +126,7 @@ This means people can work on projects that happens completely in parallel.
 For example, some projects are experimenting with an idea while others
 are building an application.
 Since this is equivalent to just using the larger Rust ecosystem,
-there is hard to see where the boundary goes between the Piston project
+it is hard to see where the boundary goes between the Piston project
 and other projects. This does not matter at all,
 because the only thing that matters is *development efficiency*.
 Instead of sticking to a fixed idea of what a game engine is,
@@ -139,7 +140,7 @@ use piston::event_loop::{Events, EventSettings};
 ```
 
 This imports two new structs, `Events` and `EventSettings`,
-which we use to crate an event loop.
+which we use to create an event loop.
 The event loop is a kind of iterator that polls events from the window
 and does its own internal logic.
 
@@ -167,23 +168,23 @@ This means that the event loop will consume a lot of energy
 that is not needed by every kind of game.
 The default frame rate and update rate settings are specified by `DEFAULT_MAX_FPS` and `DEFAULT_UPS`.
 
-We will not do any animations. Our Sudoku game only needs to update
-when the window receives some user input.
+We will not do any animations in our Sudoku game,
+so the game only needs to render when the window receives some user input.
 
-Import the trait `EventLoop` like this:
+Import the trait `EventLoop`:
 
 ```rust
 use piston::event_loop::{Events, EventLoop, EventSettings};
 ```
 
-Add a `.lazy(true)` like this:
+Add a `.lazy(true)`:
 
 ```rust
 let mut events = Events::new(EventSettings::new().lazy(true));
 ```
 
 This setting tells the event loop to not bother updating at all,
-and rendering only when user input is received.
+and render only when user input is received.
 
 Notice how Piston separates settings, like `WindowSettings` and `EventSettings`, from the object that uses these settings.
 This is a common pattern in Piston libraries.
