@@ -185,7 +185,7 @@ mod gameboard_controller;
 mod gameboard_view;
 ```
 
-Set up objects and handle like this:
+Set up objects and handle events:
 
 ```rust
   let mut events = Events::new(EventSettings::new().lazy(true));
@@ -203,7 +203,7 @@ Set up objects and handle like this:
               use graphics::{clear};
 
               clear([1.0; 4], g);
-              gameboard_view.draw(&gameboard_controller.gameboard, &c, g);
+              gameboard_view.draw(&gameboard_controller, &c, g);
           });
       }
   }
@@ -211,7 +211,7 @@ Set up objects and handle like this:
 
 The call `gameboard_controller.event(&e);` passes events to the controller.
 
-The call `gameboard_view.draw(&gameboard_controller.gameboard, &c, g);`
+The call `gameboard_view.draw(&gameboard_controller, &c, g);`
 renders the gameboard.
 
 [Goto Chapter 5](chp-05.md)

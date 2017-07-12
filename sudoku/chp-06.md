@@ -77,7 +77,7 @@ Change the `GameboardController::event` to the following:
 
 Import `CharacterCache` in "gameboard_view.rs":
 
-```
+```rust
 use graphics::character::CharacterCache;
 ```
 
@@ -97,7 +97,7 @@ Set the value of `text_color` in `GameboardViewSettings::new`:
       text_color: [0.0, 0.0, 0.1, 1.0],
 ```
 
-Add a `glyphs` parameter to `GameboardView::draw` and import `Transformed`:
+Add a `glyphs` parameter to `GameboardView::draw` and import the trait `Transformed`:
 
 ```rust
   /// Draw gameboard.
@@ -114,6 +114,9 @@ Add a `glyphs` parameter to `GameboardView::draw` and import `Transformed`:
     ...
   }
 ```
+
+The trait constraint `CharacterCache<Texture = G::Texture>` makes sure that
+the texture type matches the type used by the graphics backend.
 
 Draw characters after drawing selected cell background:
 
@@ -151,6 +154,9 @@ Draw characters after drawing selected cell background:
         }
     }
 ```
+
+The `let ch_y = pos[1] - character.top();` has a negative sign because the
+y-axis in font coordinates points upwards while the y-axis in drawing coordinates points downwards.
 
 In "main.rs", import `Filter`, `TextureSettings` and `GlyphCache`:
 

@@ -177,7 +177,7 @@ Handle the left mouse button press in `GameboardController::event`:
           let x = self.cursor_pos[0] - pos[0];
           let y = self.cursor_pos[1] - pos[1];
           // Check that coordinates are inside board boundaries.
-          if x >= 0.0 && x <= size && y >= 0.0 && y <= size {
+          if x >= 0.0 && x < size && y >= 0.0 && y < size {
               // Compute the cell position.
               let cell_x = (x / size * 9.0) as usize;
               let cell_y = (y / size * 9.0) as usize;
