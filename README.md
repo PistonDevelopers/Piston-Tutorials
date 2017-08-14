@@ -10,7 +10,7 @@ tutorial.
 A "tutorial" with instructions on compiling and running a very
 simple Piston.
 
-### [Sudoku](./sudoku) (work in progress)
+#### [Sudoku](./sudoku) (work in progress)
 Write a Sudoku game with Piston.
 
 ## Planned Tutorials
