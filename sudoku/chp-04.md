@@ -178,7 +178,7 @@ Import `GameboardView` in "main.rs":
 ```rust
 pub use gameboard::Gameboard;
 pub use gameboard_controller::GameboardController;
-pub use gameboard_view::GameboardView;
+pub use gameboard_view::{GameboardView, GameboardViewSettings};
 
 mod gameboard;
 mod gameboard_controller;
