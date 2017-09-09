@@ -3,7 +3,7 @@ by Sven Nilsen, 2017
 
 ## Chapter 3
 
-Do to rendering, we need to add a graphics API to our project.
+Due to rendering, we need to add a graphics API to our project.
 
 Piston has a 2D graphics API called Piston-Graphics,
 but it is completely separated from the core.
