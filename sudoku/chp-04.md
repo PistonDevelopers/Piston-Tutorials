@@ -167,7 +167,7 @@ impl GameboardView {
     }
 
     /// Draw gameboard.
-    pub fn draw<G: Graphics>(&self, c: &Context, controller: &GameboardController, g: &mut G) {
+    pub fn draw<G: Graphics>(&self, controller: &GameboardController, c: &Context, g: &mut G) {
 
     }
 }
