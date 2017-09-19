@@ -18,6 +18,15 @@ Write a Sudoku game with Piston.
 * graphics
 * piston
 
+## Troubleshooting
+
+* [I get `ld: library not found for -lSDL2` error on OSX](https://github.com/PistonDevelopers/rust-empty/issues/175)
+
+* I get "GL context creation failed" when running an example.
+
+  It's likely your hardware or driver doesn't support PistonWindow's default OpenGl spec. Just change it to something
+  you can support at the beginning of the example. See hello_world.rs for an example.
+
 ## Making changes to the tutorials
 Because most of the tutorials will contain heavy amounts of 
 code, TyOverby developed a markdown pre-processor that takes 
