@@ -11,8 +11,7 @@ use piston::window::WindowSettings;
 use piston::event_loop::{Events, EventLoop, EventSettings};
 use piston::input::RenderEvent;
 use glutin_window::GlutinWindow;
-use opengl_graphics::{OpenGL, Filter, GlGraphics, TextureSettings};
-use opengl_graphics::glyph_cache::GlyphCache;
+use opengl_graphics::{OpenGL, Filter, GlGraphics, GlyphCache, TextureSettings};
 
 pub use gameboard::Gameboard;
 pub use gameboard_controller::GameboardController;
@@ -39,7 +38,7 @@ fn main() {
     let gameboard_view = GameboardView::new(gameboard_view_settings);
 
     let texture_settings = TextureSettings::new().filter(Filter::Nearest);
-    let ref mut glyphs = GlyphCache::new("assets/FiraSans-Regular.ttf", texture_settings)
+    let ref mut glyphs = GlyphCache::new("assets/FiraSans-Regular.ttf", (), texture_settings)
         .expect("Could not load font");
 
     while let Some(e) = events.next(&mut window) {

@@ -102,7 +102,7 @@ impl GameboardView {
                 .draw(cell_rect, &c.draw_state, c.transform, g);
         }
 
-        /// Draw characters.
+        // Draw characters.
         let text_image = Image::new_color(settings.text_color);
         let cell_size = settings.size / 9.0;
         for j in 0..9 {
@@ -112,13 +112,14 @@ impl GameboardView {
                         settings.position[0] + i as f64 * cell_size + 15.0,
                         settings.position[1] + j as f64 * cell_size + 34.0
                     ];
-                    let character = glyphs.character(34, ch);
-                    let ch_x = pos[0] + character.left();
-                    let ch_y = pos[1] - character.top();
-                    text_image.draw(character.texture,
-                                    &c.draw_state,
-                                    c.transform.trans(ch_x, ch_y),
-                                    g);
+                    if let Ok(character) = glyphs.character(34, ch) {
+                        let ch_x = pos[0] + character.left();
+                        let ch_y = pos[1] - character.top();
+                        text_image.draw(character.texture,
+                                        &c.draw_state,
+                                        c.transform.trans(ch_x, ch_y),
+                                        g);
+                    }
                 }
             }
         }
