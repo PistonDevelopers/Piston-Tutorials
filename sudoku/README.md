@@ -48,7 +48,7 @@ To make this more efficient, we will install the tool `cargo-add` such that we c
 To install `cargo-add`, type the following:
 
 ```
-cargo install cargo-add
+cargo install cargo-edit
 ```
 
 The first library we will add is `piston`.
