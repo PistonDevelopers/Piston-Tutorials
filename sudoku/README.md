@@ -44,8 +44,8 @@ hi
 If this is not working, you might have forgotten the `--bin` flag after `cargo new`. Delete the folder and try again.
 
 Now, we need to add a few libraries to the Cargo.toml.
-To make this more efficient, we will install the tool `cargo-add` such that we can type `cargo add <package>`.
-To install `cargo-add`, type the following:
+To make this more efficient, we will install the tool `cargo-edit` such that we can type `cargo add <package>`.
+To install `cargo-edit`, type the following:
 
 ```
 cargo install cargo-edit
