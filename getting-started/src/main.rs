@@ -23,8 +23,8 @@ impl App {
 
         let square = rectangle::square(0.0, 0.0, 50.0);
         let rotation = self.rotation;
-        let (x, y) = ((args.width / 2) as f64,
-                      (args.height / 2) as f64);
+        let (x, y) = (args.width / 2.0,
+                      args.height / 2.0);
 
         self.gl.draw(args.viewport(), |c, gl| {
             // Clear the screen.
