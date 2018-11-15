@@ -64,10 +64,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.38.0"
-piston2d-graphics = "0.27.0"
-pistoncore-glutin_window = "0.50.0"
-piston2d-opengl_graphics = "0.55.0"
+piston = "0.39.0"
+piston2d-graphics = "0.28.0"
+pistoncore-glutin_window = "0.51.0"
+piston2d-opengl_graphics = "0.57.0"
 
 ```
 
@@ -127,8 +127,8 @@ impl App {
 
         let square = rectangle::square(0.0, 0.0, 50.0);
         let rotation = self.rotation;
-        let (x, y) = ((args.width / 2) as f64,
-                      (args.height / 2) as f64);
+        let (x, y) = (args.width / 2.0,
+                      args.height / 2.0);
 
         self.gl.draw(args.viewport(), |c, gl| {
             // Clear the screen.
