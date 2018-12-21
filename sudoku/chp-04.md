@@ -49,7 +49,7 @@ impl Gameboard {
 Import the `Gameboard` struct in "main.rs":
 
 ```rust
-pub use gameboard::Gameboard;
+pub use crate::gameboard::Gameboard;
 
 mod gameboard;
 ```
@@ -62,7 +62,7 @@ Add the following code:
 
 use piston::input::GenericEvent;
 
-use Gameboard;
+use crate::Gameboard;
 
 /// Handles events for Sudoku game.
 pub struct GameboardController {
@@ -92,8 +92,8 @@ By separating model and controller you can reuse the model in other projects.
 Import `GameboardController` in "main.rs":
 
 ```rust
-pub use gameboard::Gameboard;
-pub use gameboard_controller::GameboardController;
+pub use crate::gameboard::Gameboard;
+pub use crate::gameboard_controller::GameboardController;
 
 mod gameboard;
 mod gameboard_controller;
@@ -176,9 +176,9 @@ impl GameboardView {
 Import `GameboardView` in "main.rs":
 
 ```rust
-pub use gameboard::Gameboard;
-pub use gameboard_controller::GameboardController;
-pub use gameboard_view::{GameboardView, GameboardViewSettings};
+pub use crate::gameboard::Gameboard;
+pub use crate::gameboard_controller::GameboardController;
+pub use crate::gameboard_view::{GameboardView, GameboardViewSettings};
 
 mod gameboard;
 mod gameboard_controller;
