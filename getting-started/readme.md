@@ -64,10 +64,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.43.0"
+piston = "0.45.0"
 piston2d-graphics = "0.32.0"
-pistoncore-glutin_window = "0.55.0"
-piston2d-opengl_graphics = "0.62.0"
+pistoncore-glutin_window = "0.58.0"
+piston2d-opengl_graphics = "0.65.0"
 
 ```
 
@@ -158,7 +158,7 @@ fn main() {
             "spinning-square",
             [200, 200]
         )
-        .opengl(opengl)
+        .graphics_api(opengl)
         .exit_on_esc(true)
         .build()
         .unwrap();

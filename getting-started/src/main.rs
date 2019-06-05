@@ -54,7 +54,7 @@ fn main() {
             "spinning-square",
             [200, 200]
         )
-        .opengl(opengl)
+        .graphics_api(opengl)
         .exit_on_esc(true)
         .build()
         .unwrap();
