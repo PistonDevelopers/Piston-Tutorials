@@ -108,7 +108,7 @@ Add the following code:
 use graphics::types::Color;
 use graphics::{Context, Graphics};
 
-use GameboardController;
+use crate::gameboard_controller::GameboardController;
 
 /// Stores gameboard view settings.
 pub struct GameboardViewSettings {

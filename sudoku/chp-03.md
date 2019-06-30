@@ -58,7 +58,7 @@ Add a setting that tells the window backend which OpenGL version to use:
 ```rust
   let opengl = OpenGL::V3_2;
   let settings = WindowSettings::new("Sudoku", [512; 2])
-      .opengl(opengl)
+      .graphic_api(opengl)
       .exit_on_esc(true);
 ```
 
