@@ -2,7 +2,7 @@
 
 use piston::input::GenericEvent;
 
-use Gameboard;
+use crate::Gameboard;
 
 /// Handles events for Sudoku game.
 pub struct GameboardController {

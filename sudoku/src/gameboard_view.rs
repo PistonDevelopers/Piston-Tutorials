@@ -4,7 +4,7 @@ use graphics::types::Color;
 use graphics::character::CharacterCache;
 use graphics::{Context, Graphics};
 
-use GameboardController;
+use crate::GameboardController;
 
 /// Stores gameboard view settings.
 pub struct GameboardViewSettings {
