@@ -13,9 +13,9 @@ use piston::input::RenderEvent;
 use glutin_window::GlutinWindow;
 use opengl_graphics::{OpenGL, Filter, GlGraphics, GlyphCache, TextureSettings};
 
-pub use gameboard::Gameboard;
-pub use gameboard_controller::GameboardController;
-pub use gameboard_view::{GameboardView, GameboardViewSettings};
+pub use crate::gameboard::Gameboard;
+pub use crate::gameboard_controller::GameboardController;
+pub use crate::gameboard_view::{GameboardView, GameboardViewSettings};
 
 mod gameboard;
 mod gameboard_controller;
