@@ -4,10 +4,10 @@ extern crate glutin_window;
 extern crate opengl_graphics;
 
 use piston::window::WindowSettings;
-use piston::event_loop::*;
-use piston::input::*;
+use piston::event_loop::{EventSettings, Events};
+use piston::input::{RenderArgs, RenderEvent, UpdateArgs, UpdateEvent};
 use glutin_window::GlutinWindow as Window;
-use opengl_graphics::{ GlGraphics, OpenGL };
+use opengl_graphics::{GlGraphics, OpenGL};
 
 pub struct App {
     gl: GlGraphics, // OpenGL drawing backend.
