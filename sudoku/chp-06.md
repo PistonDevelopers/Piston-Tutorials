@@ -146,6 +146,12 @@ Draw characters after drawing selected cell background:
                 if let Ok(character) = glyphs.character(34, ch) {
                     let ch_x = pos[0] + character.left();
                     let ch_y = pos[1] - character.top();
+                    let text_image = text_image.src_rect([
+                        character.atlas_offset[0],
+                        character.atlas_offset[1],
+                        character.atlas_size[0],
+                        character.atlas_size[1],
+                    ]);
                     text_image.draw(character.texture,
                                     &c.draw_state,
                                     c.transform.trans(ch_x, ch_y),
