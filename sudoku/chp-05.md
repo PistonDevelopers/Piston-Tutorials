@@ -20,39 +20,31 @@ Add the following code to `GameboardView::draw`:
       Rectangle::new(settings.background_color)
           .draw(board_rect, &c.draw_state, c.transform, g);
 
-      // Draw cell borders.
-      let cell_edge = Line::new(settings.cell_edge_color, settings.cell_edge_radius);
-      for i in 0..9 {
-          // Skip lines that are covered by sections.
-          if (i % 3) == 0 {continue;}
+      // Declare the format for cell and section lines.
+        let cell_edge = Line::new(settings.cell_edge_color, settings.cell_edge_radius);
+        let section_edge = Line::new(settings.section_edge_color, settings.section_edge_radius);
 
-          let x = settings.position[0] + i as f64 / 9.0 * settings.size;
-          let y = settings.position[1] + i as f64 / 9.0 * settings.size;
-          let x2 = settings.position[0] + settings.size;
-          let y2 = settings.position[1] + settings.size;
+        // Generate and draw the lines for the Sudoku Grid.
+        for i in 0..9 {
+            let x = settings.position[0] + i as f64 / 9.0 * settings.size;
+            let y = settings.position[1] + i as f64 / 9.0 * settings.size;
+            let x2 = settings.position[0] + settings.size;
+            let y2 = settings.position[1] + settings.size;
 
-          let vline = [x, settings.position[1], x, y2];
-          cell_edge.draw(vline, &c.draw_state, c.transform, g);
+            let vline = [x, settings.position[1], x, y2];
+            let hline = [settings.position[0], y, x2, y];
 
-          let hline = [settings.position[0], y, x2, y];
-          cell_edge.draw(hline, &c.draw_state, c.transform, g);
-      }
-
-      // Draw section borders.
-      let section_edge = Line::new(settings.section_edge_color, settings.section_edge_radius);
-      for i in 0..3 {
-          // Set up coordinates.
-          let x = settings.position[0] + i as f64 / 3.0 * settings.size;
-          let y = settings.position[1] + i as f64 / 3.0 * settings.size;
-          let x2 = settings.position[0] + settings.size;
-          let y2 = settings.position[1] + settings.size;
-
-          let vline = [x, settings.position[1], x, y2];
-          section_edge.draw(vline, &c.draw_state, c.transform, g);
-
-          let hline = [settings.position[0], y, x2, y];
-          section_edge.draw(hline, &c.draw_state, c.transform, g);
-      }
+            // Draw Section Lines instead of Cell Lines
+            if (i % 3) == 0 {
+                section_edge.draw(vline, &c.draw_state, c.transform, g);
+                section_edge.draw(hline, &c.draw_state, c.transform, g);
+            }
+            // Draw the regular cell Lines
+            else {
+                cell_edge.draw(vline, &c.draw_state, c.transform, g);
+                cell_edge.draw(hline, &c.draw_state, c.transform, g);
+            }
+        }
 
       // Draw board edge.
       Rectangle::new_border(settings.board_edge_color, settings.board_edge_radius)
