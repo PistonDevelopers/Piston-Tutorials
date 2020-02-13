@@ -76,14 +76,17 @@ fn main() {
     let settings = WindowSettings::new("Roguelike", [512; 2]).exit_on_esc(true);
     let mut window: GlutinWindow = settings.build().expect("Could not create window");
     let mut gl = GlGraphics::new(opengl);
+
+    let map = make_map();
+
     let texture_settings = TextureSettings::new().filter(Filter::Nearest);
     let ref mut glyphs = GlyphCache::new("assets/FiraSans-Regular.ttf", (), texture_settings)
         .expect("Could not load font");
 
-    let map = make_map();
+    
 
     let mut events = Events::new(EventSettings::new());
-    let mut player = Object::new(0, 0, '@', RED);
+    let mut player :Object = Object::new(0, 0, '@', RED);
     while let Some(e) = events.next(&mut window) {
         if let Some(r) = e.render_args() {
             gl.draw(r.viewport(), |c, g| {
@@ -106,22 +109,22 @@ fn main() {
                     }
                 }
                 use graphics::Transformed;
-                    let character = glyphs.character(32, player.character).unwrap();
+                    let character = glyphs.character(PIXEL_SIZE, player.character).unwrap();
                     graphics::Image::new_color(player.colour).draw(
                         character.texture,
                         &c.draw_state,
                         c.transform.trans(player.x as f64, player.y as f64),
-                        g,
+                        g
                     );
             });
         }
         if let Some(k) = e.button_args() {
             if k.state == ButtonState::Press {
                 match k.button {
-                    Button::Keyboard(Key::Up) => player.y -= PIXEL_SIZE as i32,
-                    Button::Keyboard(Key::Down) => player.y += PIXEL_SIZE as i32,
-                    Button::Keyboard(Key::Left) => player.x -= PIXEL_SIZE as i32,
-                    Button::Keyboard(Key::Right) => player.x += PIXEL_SIZE as i32,
+                    Button::Keyboard(Key::Up) => player.y -= 32,
+                    Button::Keyboard(Key::Down) => player.y += 32,
+                    Button::Keyboard(Key::Left) => player.x -= 32,
+                    Button::Keyboard(Key::Right) => player.x += 32,
                     _ => (),
                 }
             }

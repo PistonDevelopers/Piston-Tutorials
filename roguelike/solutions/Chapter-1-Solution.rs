@@ -1,4 +1,4 @@
-#![crate_name = "piston_roguelike"]
+#![crate_name = "roguelike"]
 //! A Roguelike Game using Piston Engine
 
 extern crate glutin_window;
