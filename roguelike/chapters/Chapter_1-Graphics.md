@@ -168,3 +168,9 @@ gl.draw(r.viewport(), |_c, g| {
 ```
 
 If you replace `YOUR_COLOUR` with whatever colour you want run the code!
+
+## Chapter 2 - World Map ##
+
+Follow the link to go to Chapter 2, which allows us to create a world map for our game.
+
+[Chapter 2 - World Map](Chapter_2-World_Map.md)
