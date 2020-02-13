@@ -13,6 +13,9 @@ simple Piston.
 #### [Sudoku](./sudoku) (work in progress)
 Write a Sudoku game with Piston.
 
+#### [Roguelike](./roguelike) (work in progess)
+Write a Roguelike game with Piston.
+
 ## Planned Tutorials
 
 * graphics
