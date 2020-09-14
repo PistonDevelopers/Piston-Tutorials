@@ -5,19 +5,19 @@
 
 This tutorial aims to take you from an empty Cargo project to having a
 window with a rotating square in it.
-We plan to cover the core concepts used in the game in other tutorials. 
+We plan to cover the core concepts used in the game in other tutorials.
 This tutorial only covers project setup and contains a sample game simply
 to test the build environment.
 
 
 #### Prerequisites 📑
-1. Make sure you have installed [Rust](https://www.rust-lang.org/tools/install) 
+1. Make sure you have installed [Rust](https://www.rust-lang.org/tools/install)
 and [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html).
-2. Build a [hello-world project](https://doc.rust-lang.org/book/ch01-03-hello-cargo.html) 
+2. Build a [hello-world project](https://doc.rust-lang.org/book/ch01-03-hello-cargo.html)
 with Cargo.
 
 > Note: You may refer to the first few chapters of
-[The Rust Book](http://doc.rust-lang.org/book/) for some detailed information. 
+[The Rust Book](http://doc.rust-lang.org/book/) for some detailed information.
 
 #### At this stage 💁
 
@@ -48,7 +48,7 @@ cargo new --bin getting-started
 cd getting-started
 ```
 
-Now, add the following project settings and dependencies to `Cargo.toml` 
+Now, add the following project settings and dependencies to `Cargo.toml`
 using your favorite editor:
 
 ```toml
@@ -82,7 +82,7 @@ For example, when it comes to displaying a window and getting keyboard events
 in a cross-platform manner, you can use either Glutin, GLFW or SDL2.
 GLFW and SDL2 are both C and C++ cross-platform libraries for creating windows
 with an OpenGL context. Glutin is a pure Rust alternative.
-In this tutorial we're going forward with Glutin; you'll notice that in the 
+In this tutorial we're going forward with Glutin; you'll notice that in the
 cargo file, we imported `glutin_window`.
 
 `opengl_graphics` is another backend that implements the interface defined in
