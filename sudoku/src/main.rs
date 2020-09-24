@@ -24,7 +24,7 @@ mod gameboard_view;
 fn main() {
     let opengl = OpenGL::V3_2;
     let settings = WindowSettings::new("Sudoku", [512; 2])
-        .opengl(opengl)
+        .graphics_api(opengl)
         .exit_on_esc(true);
     let mut window: GlutinWindow = settings.build()
         .expect("Could not create window");

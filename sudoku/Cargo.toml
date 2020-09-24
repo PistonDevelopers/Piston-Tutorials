@@ -6,7 +6,7 @@ version = "0.1.0"
 name = "sudoku"
 
 [dependencies]
-piston = "*"
-piston2d-graphics = "*"
-piston2d-opengl_graphics = "*"
-pistoncore-glutin_window = "*"
+piston = "0.52.0"
+piston2d-graphics = "0.37.0"
+pistoncore-glutin_window = "0.66.0"
+piston2d-opengl_graphics = "0.74.0"
