@@ -10,6 +10,11 @@ with let's add the piston crate.
 On your terminal, type the following:
 `cargo add piston`
 
+If you get the error "no such subcommand: `add`" type the following:
+`cargo install cargo-edit`
+then retry:
+`cargo add piston`
+
 If you look into you `Cargo.toml` file, underneath `[dependencies]`, you should
 now see: `piston = "0.49.0"` (or whatever the most recent version of piston
 is).
