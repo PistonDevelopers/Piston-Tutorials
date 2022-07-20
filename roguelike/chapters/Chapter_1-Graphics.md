@@ -32,7 +32,7 @@ To do this, **you** will need to create some Settings for your window:
 
 ``` rust
 //TODO
-let settings = WindowSettings::new(BLANK, BLANK).exit_on_exc(true);
+let settings = WindowSettings::new(BLANK, BLANK).exit_on_esc(true);
 ```
 Look through the generated documents and it should guide you on what to replace
 the `BLANK` spaces with (**hint: there are 2 BLANKS for a reason!**).
