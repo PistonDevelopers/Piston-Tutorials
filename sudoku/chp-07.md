@@ -320,4 +320,7 @@ fn color_cell<G: Graphics>(
 }
 ```
 
+Now it's time for the finishing touches that will actually make this a playable
+Sudoku game.
+
 [Go to chapter 8](chp-08.md)
