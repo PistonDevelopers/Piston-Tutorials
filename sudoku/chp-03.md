@@ -1,5 +1,6 @@
 # Sudoku tutorial
 by Sven Nilsen, 2017
+updated by Brent Westbrook, 2022
 
 ## Chapter 3
 
@@ -35,16 +36,7 @@ cargo add piston2d-graphics
 cargo add piston2d-opengl_graphics
 ```
 
-In "main.rs", add `extern crate graphics;` and `extern crate opengl_graphics`:
-
-```rust
-extern crate piston;
-extern crate glutin_window;
-extern crate graphics;
-extern crate opengl_graphics;
-```
-
-Import `OpenGL` and `GlGraphics`:
+In "main.rs", import `OpenGL` and `GlGraphics` from the latter:
 
 ```rust
 use glutin_window::GlutinWindow;
@@ -54,11 +46,16 @@ use opengl_graphics::{OpenGL, GlGraphics};
 Add a setting that tells the window backend which OpenGL version to use:
 
 ```rust
-  let opengl = OpenGL::V3_2;
-  let settings = WindowSettings::new("Sudoku", [512; 2])
-      .graphics_api(opengl)
-      .exit_on_esc(true);
+    let opengl = OpenGL::V3_2;
+    let settings = WindowSettings::new("Sudoku", (640, 480))
+        .exit_on_esc(true)
+        .graphics_api(opengl)
+        .vsync(true);
 ```
+
+Note that I left in my `vsync(true)` setting from the
+[Troubleshooting](chp-02.md###Troubleshooting) section. If you didn't hit the
+same issue I did, you can feel free to omit that.
 
 The most widely supported version is OpenGL 3.2, but if you are e.g. developing
 inside a virtual environment you might need to change it.
@@ -74,11 +71,10 @@ The `gl` object stores shaders and buffers that the OpenGL backend for
 Piston-Graphics needs to talk with the GPU.
 
 Now we will handle the render events emitted by the event loop. To do this we
-need a trait `RenderEvent` from the `input` submodule of the `piston` library:
+need the `RenderEvent` trait from the `piston` crate:
 
 ```rust
-use piston::event_loop::{Events, EventLoop, EventSettings};
-use piston::input::RenderEvent;
+use piston::{EventLoop, RenderEvent, WindowSettings};
 ```
 
 This puts some methods into scope such we can write:
@@ -135,14 +131,14 @@ the number of draw calls to the GPU.
 Piston-Graphics is an immediate API, which means all rendering is decided on the
 fly. The disadvantage with this approach is the bandwidth between the CPU and
 the GPU can limit how much stuff you can draw on the screen. The advantage with
-this approach is flexibility: You can decide what to draw for each frame,
+this approach is flexibility: you can decide what to draw for each frame,
 without needing to keep track of state.
 
 Game developers focus on *bottlenecks* when optimizing applications, because
-that results the largest local gains in efficiency. For applications that do not
-use animations, there is less benefit in handling static buffers on the GPU,
-unless rendering is very expensive. This is because rendering on user input only
-is a low frequency event. Performance optimizations that you implement have less
+that results in the largest local gains in efficiency. For applications that do
+not use animations, there is less benefit in handling static buffers on the GPU,
+unless rendering is very expensive. This is because rendering on user input is a
+low frequency event. Performance optimizations that you implement have less
 gains on average because they are multiplied with a low number. When you press
 hardware to its limits, the bottlenecks are more likely to occur in places with
 *high frequency events*. One smart way to optimize an application is to reduce
@@ -165,7 +161,8 @@ that developers can make top-down decisions about their project.
 
 For the rest of the tutorial, we will focus on the game itself.
 
-Clear the window in a white color:
+Clear the window in a white color, using the `clear` function from the
+`piston2d-graphics` crate:
 
 ```rust
       gl.draw(args.viewport(), |c, g| {
@@ -174,6 +171,41 @@ Clear the window in a white color:
           clear([1.0; 4], g);
       });
 ```
+
+The final contents of the `main.rs` file should be:
+
+```rust
+use glutin_window::GlutinWindow;
+use opengl_graphics::{GlGraphics, OpenGL};
+use piston::event_loop::{EventSettings, Events};
+use piston::{EventLoop, RenderEvent, WindowSettings};
+
+fn main() {
+    let opengl = OpenGL::V3_2;
+    let settings = WindowSettings::new("Sudoku", (640, 480))
+        .exit_on_esc(true)
+        .graphics_api(opengl)
+        .vsync(true);
+    let mut window: GlutinWindow =
+        settings.build().expect("Could not create window");
+    let mut events = Events::new(EventSettings::new().lazy(true));
+    let mut gl = GlGraphics::new(opengl);
+
+    while let Some(e) = events.next(&mut window) {
+        if let Some(args) = e.render_args() {
+            gl.draw(args.viewport(), |c, g| {
+                use graphics::clear;
+
+                clear([1.0; 4], g);
+            });
+        }
+    }
+}
+```
+
+Your editor is probably complaining now about the unused `c` parameter in our
+`draw` closure, but running the code should produce a white window that exits
+when you press ESC.
 
 Now we are ready to start working on the actual game!
 
