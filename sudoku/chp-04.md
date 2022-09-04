@@ -1,10 +1,11 @@
 # Sudoku tutorial
 by Sven Nilsen, 2017
+updated by Brent Westbrook, 2022
 
 ## Chapter 4
 
-Before we do anything, we will force ourselves to document the code.
-Add `#![deny(missing_docs)]` to the top of "src/main.rs" and a doc comment:
+Before we do anything, we will force ourselves to document the code. Add
+`#![deny(missing_docs)]` to the top of "src/main.rs" and a doc comment:
 
 ```rust
 #![deny(missing_docs)]
@@ -17,11 +18,11 @@ extern crate graphics;
 extern crate opengl_graphics;
 ```
 
-The `//!` is used on doc comments that comment the object they are inside.
-When commenting something from the outside, you use `///`.
+The `//!` is used on doc comments that comment the object they are inside. When
+commenting something from the outside, you use `///`.
 
-Create a new file in the "src/" directory called "gameboard.rs".
-Add the following code:
+Create a new file in the "src/" directory called "gameboard.rs". Add the
+following code:
 
 ```rust
 //! Game board logic.
@@ -54,8 +55,8 @@ pub use crate::gameboard::Gameboard;
 mod gameboard;
 ```
 
-Create a new file in the "src/" directory called "gameboard_controller.rs".
-Add the following code:
+Create a new file in the "src/" directory called "gameboard_controller.rs". Add
+the following code:
 
 ```rust
 //! Gameboard controller.
@@ -85,9 +86,9 @@ impl GameboardController {
 }
 ```
 
-A controller is an object that handles events and manipulates some data.
-The data manipulated by a controller is called a "model".
-By separating model and controller you can reuse the model in other projects.
+A controller is an object that handles events and manipulates some data. The
+data manipulated by a controller is called a "model". By separating model and
+controller you can reuse the model in other projects.
 
 Import `GameboardController` in "main.rs":
 
@@ -99,8 +100,8 @@ mod gameboard;
 mod gameboard_controller;
 ```
 
-Create a new file in the "src/" directory called "gameboard_view.rs".
-Add the following code:
+Create a new file in the "src/" directory called "gameboard_view.rs". Add the
+following code:
 
 ```rust
 //! Gameboard view.
