@@ -11,11 +11,6 @@ Before we do anything, we will force ourselves to document the code. Add
 #![deny(missing_docs)]
 
 //! A Sudoku game.
-
-extern crate piston;
-extern crate glutin_window;
-extern crate graphics;
-extern crate opengl_graphics;
 ```
 
 The `//!` is used on doc comments that comment the object they are inside. When
@@ -61,7 +56,7 @@ the following code:
 ```rust
 //! Gameboard controller.
 
-use piston::input::GenericEvent;
+use piston::GenericEvent;
 
 use crate::Gameboard;
 
@@ -212,7 +207,7 @@ Set up objects and handle events:
 
 The call `gameboard_controller.event(&e);` passes events to the controller.
 
-The call `gameboard_view.draw(&gameboard_controller, &c, g);`
-renders the gameboard.
+The call `gameboard_view.draw(&gameboard_controller, &c, g);` renders the
+gameboard.
 
 [Goto Chapter 5](chp-05.md)
