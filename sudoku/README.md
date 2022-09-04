@@ -1,6 +1,5 @@
 # Welcome to the Sudoku tutorial!
-by Sven Nilsen, 2017
-updated by Brent Westbrook, 2022
+by Sven Nilsen, 2017; updated by Brent Westbrook, 2022
 
 In this tutorial, you will learn how to create a Sudoku game with Piston. This
 tutorial is a bit long, because it goes step by step through the thinking

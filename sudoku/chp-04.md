@@ -1,6 +1,5 @@
 # Sudoku tutorial
-by Sven Nilsen, 2017
-updated by Brent Westbrook, 2022
+by Sven Nilsen, 2017; updated by Brent Westbrook, 2022
 
 ## Chapter 4
 
