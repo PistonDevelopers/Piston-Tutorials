@@ -7,23 +7,38 @@ updated by Brent Westbrook, 2022
 Add the following code to `GameboardView::draw`:
 
 ```rust
-  /// Draw gameboard.
-  pub fn draw<G: Graphics>(&self, controller: &GameboardController, c: &Context, g: &mut G) {
-      use graphics::{Line, Rectangle};
+    /// Draw gameboard.
+    pub fn draw<G: Graphics>(
+        &self,
+        controller: &GameboardController,
+        c: &Context,
+        g: &mut G,
+    ) {
+        use graphics::{Line, Rectangle};
 
-      let ref settings = self.settings;
-      let board_rect = [
-          settings.position[0], settings.position[1],
-          settings.size, settings.size,
-      ];
+        let ref settings = self.settings;
+        let board_rect = [
+            settings.position[0],
+            settings.position[1],
+            settings.size,
+            settings.size,
+        ];
 
-      // Draw board background.
-      Rectangle::new(settings.background_color)
-          .draw(board_rect, &c.draw_state, c.transform, g);
+        // Draw board background.
+        Rectangle::new(settings.background_color).draw(
+            board_rect,
+            &c.draw_state,
+            c.transform,
+            g,
+        );
 
-      // Declare the format for cell and section lines.
-        let cell_edge = Line::new(settings.cell_edge_color, settings.cell_edge_radius);
-        let section_edge = Line::new(settings.section_edge_color, settings.section_edge_radius);
+        // Declare the format for cell and section lines.
+        let cell_edge =
+            Line::new(settings.cell_edge_color, settings.cell_edge_radius);
+        let section_edge = Line::new(
+            settings.section_edge_color,
+            settings.section_edge_radius,
+        );
 
         // Generate and draw the lines for the Sudoku Grid.
         for i in 0..9 {
@@ -47,10 +62,13 @@ Add the following code to `GameboardView::draw`:
             }
         }
 
-      // Draw board edge.
-      Rectangle::new_border(settings.board_edge_color, settings.board_edge_radius)
-          .draw(board_rect, &c.draw_state, c.transform, g);
-  }
+        // Draw board edge.
+        Rectangle::new_border(
+            settings.board_edge_color,
+            settings.board_edge_radius,
+        )
+        .draw(board_rect, &c.draw_state, c.transform, g);
+    }
 ```
 
 Piston-Graphics splits data into high and low frequency usage. `Line` and
@@ -149,34 +167,36 @@ These arguments will be used to compute which cell the user clicks on.
 In "main.rs" you need to pass in the position and size from the view:
 
 ```rust
-    gameboard_controller.event(gameboard_view.settings.position,
-                               gameboard_view.settings.size,
-                               &e);
+        gameboard_controller.event(
+            gameboard_view.settings.position,
+            gameboard_view.settings.size,
+            &e,
+        );
 ```
 
 Handle the left mouse button press in `GameboardController::event`:
 
 ```rust
-  /// Handles events.
-  pub fn event<E: GenericEvent>(&mut self, pos: [f64; 2], size: f64, e: &E) {
-      use piston::input::{Button, MouseButton};
+    /// Handles events.
+    pub fn event<E: GenericEvent>(&mut self, pos: [f64; 2], size: f64, e: &E) {
+        use piston::input::{Button, MouseButton};
 
-      if let Some(pos) = e.mouse_cursor_args() {
-          self.cursor_pos = pos;
-      }
-      if let Some(Button::Mouse(MouseButton::Left)) = e.press_args() {
-          // Find coordinates relative to upper left corner.
-          let x = self.cursor_pos[0] - pos[0];
-          let y = self.cursor_pos[1] - pos[1];
-          // Check that coordinates are inside board boundaries.
-          if x >= 0.0 && x < size && y >= 0.0 && y < size {
-              // Compute the cell position.
-              let cell_x = (x / size * 9.0) as usize;
-              let cell_y = (y / size * 9.0) as usize;
-              self.selected_cell = Some([cell_x, cell_y]);
-          }
-      }
-  }
+        if let Some(pos) = e.mouse_cursor_args() {
+            self.cursor_pos = pos;
+        }
+        if let Some(Button::Mouse(MouseButton::Left)) = e.press_args() {
+            // Find coordinates relative to upper left corner.
+            let x = self.cursor_pos[0] - pos[0];
+            let y = self.cursor_pos[1] - pos[1];
+            // Check that coordinates are inside board boundaries.
+            if x >= 0.0 && x < size && y >= 0.0 && y < size {
+                // Compute the cell position.
+                let cell_x = (x / size * 9.0) as usize;
+                let cell_y = (y / size * 9.0) as usize;
+                self.selected_cell = Some([cell_x, cell_y]);
+            }
+        }
+    }
 ```
 
 Add a new field `selected_cell_background_color` to `GameboardViewSettings`:
