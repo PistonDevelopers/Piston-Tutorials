@@ -1,10 +1,11 @@
 # Sudoku tutorial
 by Sven Nilsen, 2017
+updated by Brent Westbrook, 2022
 
 ## Chapter 6
 
-Now we will render the numbers.
-We need two new methods on the `Gameboard` struct:
+Now we will render the numbers. We need two new methods on the `Gameboard`
+struct:
 
 ```rust
   /// Gets the character at cell location.
@@ -97,7 +98,8 @@ Set the value of `text_color` in `GameboardViewSettings::new`:
       text_color: [0.0, 0.0, 0.1, 1.0],
 ```
 
-Add a `glyphs` parameter to `GameboardView::draw` and import the trait `Transformed`:
+Add a `glyphs` parameter to `GameboardView::draw` and import the trait
+`Transformed`:
 
 ```rust
   /// Draw gameboard.
@@ -115,8 +117,8 @@ Add a `glyphs` parameter to `GameboardView::draw` and import the trait `Transfor
   }
 ```
 
-The trait constraint `CharacterCache<Texture = G::Texture>` makes sure that
-the texture type matches the type used by the graphics backend.
+The trait constraint `CharacterCache<Texture = G::Texture>` makes sure that the
+texture type matches the type used by the graphics backend.
 
 Draw characters after drawing selected cell background:
 
@@ -163,7 +165,8 @@ Draw characters after drawing selected cell background:
 ```
 
 The `let ch_y = pos[1] - character.top();` has a negative sign because the
-y-axis in font coordinates points upwards while the y-axis in drawing coordinates points downwards.
+y-axis in font coordinates points upwards while the y-axis in drawing
+coordinates points downwards.
 
 In "main.rs", import `Filter`, `TextureSettings` and `GlyphCache`:
 
@@ -184,9 +187,9 @@ Before the event loop, load the font:
       .expect("Could not load font");
 ```
 
-We use nearest neighbor filter to show sharper glyphs.
-Notice `ref mut` can be used to create a mutable reference.
-This saves us from putting `&` in front of an argument.
+We use nearest neighbor filter to show sharper glyphs. Notice `ref mut` can be
+used to create a mutable reference. This saves us from putting `&` in front of
+an argument.
 
 Pass the `glyphs` object to `gameboard_view.draw`:
 
@@ -194,7 +197,7 @@ Pass the `glyphs` object to `gameboard_view.draw`:
 gameboard_view.draw(&gameboard_controller, glyphs, &c, g);
 ```
 
-When typing `cargo run` in the Terminal window, you should be able to fill
-in the numbers:
+When typing `cargo run` in the Terminal window, you should be able to fill in
+the numbers:
 
 ![fill in numbers](./images/fill-in-numbers.png)
