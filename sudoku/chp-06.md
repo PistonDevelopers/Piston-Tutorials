@@ -201,3 +201,5 @@ When typing `cargo run` in the Terminal window, you should be able to fill in
 the numbers:
 
 ![fill in numbers](./images/fill-in-numbers.png)
+
+[Go to chapter 7](chp-07.md)
