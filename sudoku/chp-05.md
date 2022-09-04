@@ -1,7 +1,8 @@
 # Sudoku tutorial
 by Sven Nilsen, 2017
+updated by Brent Westbrook, 2022
 
-# Chapter 5
+## Chapter 5
 
 Add the following code to `GameboardView::draw`:
 
@@ -52,28 +53,27 @@ Add the following code to `GameboardView::draw`:
   }
 ```
 
-Piston-Graphics splits data into high and low frequency usage.
-`Line` and `Rectangle` store color and edge information,
-but the coordinates are passed to the `.draw` method call.
-This makes it easy to reuse these objects by declaring them before loops.
+Piston-Graphics splits data into high and low frequency usage. `Line` and
+`Rectangle` store color and edge information, but the coordinates are passed to
+the `.draw` method call. This makes it easy to reuse these objects by declaring
+them before loops.
 
-`Line` stores the coordinates in the format `[x1, y1, x2, y2]`.
-`Rectangle` stores the coordinates in the format `[x, y, w, h]`.
+`Line` stores the coordinates in the format `[x1, y1, x2, y2]`. `Rectangle`
+stores the coordinates in the format `[x, y, w, h]`.
 
-In addition to the shape, the `.draw` method requires the draw state
-from `Context`, a matrix transform (often `c.transform`) and the graphics backend.
+In addition to the shape, the `.draw` method requires the draw state from
+`Context`, a matrix transform (often `c.transform`) and the graphics backend.
 
-If you are familiar with other APIs like Cairo or GDI+, you might think
-the way Piston-Graphics does drawing is somewhat unfamiliar.
-In these APIs the context and the object that renders is the same thing.
-In Piston-Graphics, `Context` is separated from the object implementing
-`Graphics`.
+If you are familiar with other APIs like Cairo or GDI+, you might think the way
+Piston-Graphics does drawing is somewhat unfamiliar. In these APIs the context
+and the object that renders is the same thing. In Piston-Graphics, `Context` is
+separated from the object implementing `Graphics`.
 
-By manipulating the `Context` object, one can use the default stack as
-a way to push/pop transforms.
+By manipulating the `Context` object, one can use the default stack as a way to
+push/pop transforms.
 
-The draw state stores things like scissor rectangle, stencil usage and
-blending settings.
+The draw state stores things like scissor rectangle, stencil usage and blending
+settings.
 
 The matrix transform is use to translate, rotate, scale etc. the shape.
 
