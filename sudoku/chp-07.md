@@ -4,7 +4,7 @@ by Brent Westbrook, 2022
 ## Chapter 7
 
 While it's pretty exciting to put numbers into a grid, we need a couple more
-features to call it sudoku. In this chapter we'll implement a function to read
+features to call it Sudoku. In this chapter we'll implement a function to read
 in an [SDM file](https://www.sudocue.net/fileformats.php), which contains a full
 puzzle on a single line. For example, the line
 
@@ -102,7 +102,7 @@ back in `main.rs`, you can replace your `Gameboard::new()` call with
 
 One thing you might notice if you run your new `main.rs` file is that you can
 overwrite the digits we just loaded in! We need to fix that if we actually want
-to play the loaded sudoku without cheating. Basically we need to tag each
+to play the loaded Sudoku without cheating. Basically we need to tag each
 element of our `Gameboard` with a value that says whether or not we can change
 it in the future so that when we call our `set` method we do nothing if the cell
 was loaded. We also probably want to make the loaded cells impossible to select

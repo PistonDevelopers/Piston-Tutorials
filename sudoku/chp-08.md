@@ -345,16 +345,16 @@ let infile = args.get(1).expect("usage: sudoku SDM_FILE");
 let gameboard = Gameboard::load_sdm(infile);
 ```
 
-Now you can play any sudoku that you get into an SDM file!
+Now you can play any Sudoku that you get into an SDM file!
 
 ### Future Work
 
 Hopefully this tutorial has given you some familiarity with Piston and left you
-with a working sudoku program. Still, there are a lot of features you might wish
+with a working Sudoku program. Still, there are a lot of features you might wish
 to include in such a program.
 
 Some future developments that I plan to work on include:
-- Writing a sudoku solver
+- Writing a Sudoku solver
 - Using the solver to generate my own puzzles at different difficulties
 - Adding notes/pencil marks
 
