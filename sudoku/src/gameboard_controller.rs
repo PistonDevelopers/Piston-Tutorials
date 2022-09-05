@@ -1,6 +1,6 @@
 //! Gameboard controller.
 
-use piston::input::GenericEvent;
+use piston::GenericEvent;
 
 use crate::Gameboard;
 
@@ -18,7 +18,7 @@ impl GameboardController {
     /// Creates a new gameboard controller.
     pub fn new(gameboard: Gameboard) -> GameboardController {
         GameboardController {
-            gameboard: gameboard,
+            gameboard,
             selected_cell: None,
             cursor_pos: [0.0; 2],
         }
@@ -36,7 +36,7 @@ impl GameboardController {
             let x = self.cursor_pos[0] - pos[0];
             let y = self.cursor_pos[1] - pos[1];
             // Check that coordinates are inside board boundaries.
-            if x >= 0.0 && x < size && y >= 0.0 && y < size {
+            if x >= 0.0 && x <= size && y >= 0.0 && y <= size {
                 // Compute the cell position.
                 let cell_x = (x / size * 9.0) as usize;
                 let cell_y = (y / size * 9.0) as usize;
@@ -56,6 +56,7 @@ impl GameboardController {
                     Key::D7 => self.gameboard.set(ind, 7),
                     Key::D8 => self.gameboard.set(ind, 8),
                     Key::D9 => self.gameboard.set(ind, 9),
+                    Key::Backspace => self.gameboard.set(ind, 0),
                     _ => {}
                 }
             }

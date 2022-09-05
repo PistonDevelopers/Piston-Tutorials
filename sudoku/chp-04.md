@@ -1,27 +1,22 @@
 # Sudoku tutorial
-by Sven Nilsen, 2017
+by Sven Nilsen, 2017; updated by Brent Westbrook, 2022
 
 ## Chapter 4
 
-Before we do anything, we will force ourselves to document the code.
-Add `#![deny(missing_docs)]` to the top of "src/main.rs" and a doc comment:
+Before we do anything, we will force ourselves to document the code. Add
+`#![deny(missing_docs)]` to the top of "src/main.rs" and a doc comment:
 
 ```rust
 #![deny(missing_docs)]
 
 //! A Sudoku game.
-
-extern crate piston;
-extern crate glutin_window;
-extern crate graphics;
-extern crate opengl_graphics;
 ```
 
-The `//!` is used on doc comments that comment the object they are inside.
-When commenting something from the outside, you use `///`.
+The `//!` is used on doc comments that comment the object they are inside. When
+commenting something from the outside, you use `///`.
 
-Create a new file in the "src/" directory called "gameboard.rs".
-Add the following code:
+Create a new file in the "src/" directory called "gameboard.rs". Add the
+following code:
 
 ```rust
 //! Game board logic.
@@ -54,13 +49,13 @@ pub use crate::gameboard::Gameboard;
 mod gameboard;
 ```
 
-Create a new file in the "src/" directory called "gameboard_controller.rs".
-Add the following code:
+Create a new file in the "src/" directory called "gameboard_controller.rs". Add
+the following code:
 
 ```rust
 //! Gameboard controller.
 
-use piston::input::GenericEvent;
+use piston::GenericEvent;
 
 use crate::Gameboard;
 
@@ -85,9 +80,9 @@ impl GameboardController {
 }
 ```
 
-A controller is an object that handles events and manipulates some data.
-The data manipulated by a controller is called a "model".
-By separating model and controller you can reuse the model in other projects.
+A controller is an object that handles events and manipulates some data. The
+data manipulated by a controller is called a "model". By separating model and
+controller you can reuse the model in other projects.
 
 Import `GameboardController` in "main.rs":
 
@@ -99,8 +94,8 @@ mod gameboard;
 mod gameboard_controller;
 ```
 
-Create a new file in the "src/" directory called "gameboard_view.rs".
-Add the following code:
+Create a new file in the "src/" directory called "gameboard_view.rs". Add the
+following code:
 
 ```rust
 //! Gameboard view.
@@ -211,7 +206,7 @@ Set up objects and handle events:
 
 The call `gameboard_controller.event(&e);` passes events to the controller.
 
-The call `gameboard_view.draw(&gameboard_controller, &c, g);`
-renders the gameboard.
+The call `gameboard_view.draw(&gameboard_controller, &c, g);` renders the
+gameboard.
 
 [Goto Chapter 5](chp-05.md)
