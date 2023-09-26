@@ -65,10 +65,10 @@ authors = [
 name = "spinning-square"
 
 [dependencies]
-piston = "0.53.0"
-piston2d-graphics = "0.43.0"
-pistoncore-glutin_window = "0.71.0"
-piston2d-opengl_graphics = "0.82.0"
+piston = "0.54.0"
+piston2d-graphics = "0.44.0"
+pistoncore-glutin_window = "0.72.0"
+piston2d-opengl_graphics = "0.83.0"
 
 ```
 
