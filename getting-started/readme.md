@@ -68,7 +68,7 @@ name = "spinning-square"
 piston = "0.55.0"
 piston2d-graphics = "0.44.0"
 pistoncore-glutin_window = "0.72.0"
-piston2d-opengl_graphics = "0.83.0"
+piston2d-opengl_graphics = "0.84.0"
 
 ```
 
