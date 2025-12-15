@@ -17,7 +17,7 @@ mod gameboard;
 mod gameboard_controller;
 mod gameboard_view;
 
-static FONT: &str = "/usr/share/fonts/TTF/DejaVuSans.ttf";
+static FONT: &str = "assets/FiraSans-Regular.ttf";
 
 fn main() {
     let opengl = OpenGL::V3_2;
