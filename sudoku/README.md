@@ -59,7 +59,7 @@ When you open up "Cargo.toml", you should see something like:
 
 ```
 [dependencies]
-piston = "0.53.1"
+piston = "1.0.0"
 ```
 
 Now you can updated your `main.rs` file:
